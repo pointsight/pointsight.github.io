@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Sample Images</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .image-container { margin: 20px 0; }
+        canvas { border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Sample Images Generator</h1>
+    <div id="images"></div>
+
+    <script>
+        const images = [
+            {name: 'walmart-analysis.jpg', width: 800, height: 600, text: 'Walmart Stock Analysis', 
+             gradient: {
+                 start: '#2563eb',
+                 end: '#1e40af'
+             },
+             icons: ['📈', '💹', '🏪']
+            }
+        ];
+
+        const container = document.getElementById('images');
+        
+        images.forEach(img => {
+            const div = document.createElement('div');
+            div.className = 'image-container';
+            
+            const canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            
+            const ctx = canvas.getContext('2d');
+            
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, img.width, img.height);
+            gradient.addColorStop(0, img.gradient.start);
+            gradient.addColorStop(1, img.gradient.end);
+            
+            // Fill background
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, img.width, img.height);
+            
+            // Add decorative pattern
+            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+            ctx.lineWidth = 2;
+            for(let i = 0; i < img.width; i += 40) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i + 40, img.height);
+                ctx.stroke();
+            }
+            
+            // Add icons
+            const iconSize = Math.min(img.width, img.height) * 0.15;
+            ctx.font = `${iconSize}px Arial`;
+            const iconSpacing = iconSize * 1.5;
+            const startX = (img.width - (img.icons.length - 1) * iconSpacing) / 2;
+            
+            img.icons.forEach((icon, index) => {
+                ctx.fillStyle = 'rgba(255,255,255,0.9)';
+                ctx.fillText(icon, startX + index * iconSpacing, img.height/2 - iconSize);
+            });
+            
+            // Add text
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${Math.min(img.width, img.height) * 0.08}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(img.text, img.width/2, img.height/2 + iconSize/2);
+            
+            // Add subtle chart lines in background
+            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(img.width * 0.1, img.height * 0.7);
+            ctx.quadraticCurveTo(
+                img.width * 0.5, img.height * 0.3,
+                img.width * 0.9, img.height * 0.6
+            );
+            ctx.stroke();
+            
+            // Add download link
+            const link = document.createElement('a');
+            link.href = canvas.toDataURL('image/jpeg', 0.8);
+            link.download = img.name;
+            link.appendChild(canvas);
+            
+            // Add title
+            const title = document.createElement('p');
+            title.textContent = img.name;
+            
+            div.appendChild(title);
+            div.appendChild(link);
+            container.appendChild(div);
+        });
+
+        // Add instructions
+        const instructions = document.createElement('p');
+        instructions.innerHTML = 'Click the image to download it. Then move it to your website\'s images folder.';
+        document.body.insertBefore(instructions, container);
+    </script>
+</body>
+</html>

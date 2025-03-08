@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim | InsightAnalytics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="index.html">
+                        <span>Insight</span>Analytics
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="posts/walmart-stock-analysis.html">Blog</a></li>
+                    <li><a href="about.html">Hakkında</a></li>
+                    <li><a href="contact.html" class="active">İletişim</a></li>
+                </ul>
+                <button class="theme-toggle" aria-label="Tema Değiştir">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-hero">
+            <div class="container">
+                <h1>İletişime Geçin</h1>
+                <p class="subtitle">Sorularınız ve işbirliği önerileriniz için bize ulaşın</p>
+            </div>
+        </section>
+
+        <section class="contact-content">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Adres</h3>
+                            <p>Konya,Türkiye</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-envelope"></i>
+                            <h3>E-posta</h3>
+                            <p>info@insightanalytics.com</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-phone"></i>
+                            <h3>Telefon</h3>
+                            <p>+90 (551) 256 56 34</p>
+                            <p>+90 (534) 791 23 85</p>
+                        </div>
+                        <div class="social-links">
+                            <h3>Sosyal Medya</h3>
+                            <div class="social-icons">
+                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Medium"><i class="fab fa-medium"></i></a>
+                                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container">
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">İsim</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-posta</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Konu</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mesajınız</label>
+                                <textarea id="message" name="message" rows="6" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <span>Gönder</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <h2>Sıkça Sorulan Sorular</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>Hangi hizmetleri sunuyorsunuz?</h3>
+                        <p>Veri analizi, borsa analizi ve makine öğrenimi alanlarında danışmanlık ve eğitim hizmetleri sunuyoruz.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Eğitimleriniz nasıl gerçekleşiyor?</h3>
+                        <p>Eğitimlerimiz hem online hem de yüz yüze olarak gerçekleştirilmektedir. İhtiyaçlarınıza göre özel programlar hazırlıyoruz.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Danışmanlık süreciniz nasıl işliyor?</h3>
+                        <p>İlk görüşmemizde ihtiyaçlarınızı belirliyor ve size özel bir çözüm planı sunuyoruz. Süreç boyunca düzenli raporlama yapıyoruz.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>Insight</span>Analytics
+                    <p>Veri odaklı kararlar için yanınızdayız</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Medium"><i class="fab fa-medium"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>

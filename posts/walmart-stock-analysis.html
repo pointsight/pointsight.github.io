@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walmart Hisse Senedi Fiyat Analizi | InsightAnalytics Blog</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="../index.html">
+                        <span>Insight</span>Analytics
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Ana Sayfa</a></li>
+                    <li><a href="../posts/walmart-stock-analysis.html" class="active">Blog</a></li>
+                    <li><a href="../about.html">Hakkında</a></li>
+                    <li><a href="../contact.html">İletişim</a></li>
+                </ul>
+                <button class="theme-toggle" aria-label="Tema Değiştir">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <style>
+        /* Blog içeriği için özel stiller */
+        .post-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .post-header {
+            margin-bottom: 2rem;
+        }
+
+        .post-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .post-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: var(--light-background);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .post-image img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+
+        .chart-section {
+            background: var(--light-background);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .chart-container {
+            width: 100%;
+            margin-bottom: 1.5rem;
+            background: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .analysis-chart {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .data-table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            background: var(--light-background);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 0.75rem;
+            text-align: right;
+            border: 1px solid var(--border-color);
+        }
+
+        .data-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+        }
+
+        .conclusions-section {
+            background: var(--light-background);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .key-findings,
+        .recommendations {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 1rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .recommendations {
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .key-findings ul,
+        .recommendations ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .key-findings li,
+        .recommendations li {
+            margin: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .key-findings li::before {
+            content: "✓";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .recommendations li::before {
+            content: "→";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+    </style>
+
+    <main>
+        <article class="post-content container">
+            <header class="post-header">
+                <h1><span class="section-emoji">📊</span> Walmart Hisse Senedi Fiyat Analizi ve Zaman Serisi Modellemesi</h1>
+                <div class="post-meta">
+                    <span class="post-date">📅 7 Mart 2025</span>
+                    <span class="post-author">👤 Ali Volkan Çınar</span>
+                    <span class="post-read-time">⏱️ 10 dk okuma</span>
+                </div>
+                <div class="post-tags">
+                    <a href="#" class="tag">💹 Borsa Analizi</a>
+                    <a href="#" class="tag">🐍 Python</a>
+                    <a href="#" class="tag">📈 Veri Bilimi</a>
+                </div>
+            </header>
+
+            <div class="post-image">
+                <img src="../images/walmart.webp" alt="Walmart Hisse Senedi Analizi">
+            </div>
+
+            <div class="post-body">
+                <div class="analysis-card">
+                    <p class="lead">Bu blog yazısında Python kullanılarak gerçekleştirilen Walmart hisse senedi fiyat analizi ve zaman serisi modellemesi ele alınmıştır. Çalışmada yfinance API ile veri çekimi, veri işleme, görselleştirme ve istatistiksel analizler gerçekleştirilmiştir.</p>
+                </div>
+
+                <h2><span class="section-emoji">📝</span> 1. Veri Seti Özeti</h2>
+
+                <h3>📌 Walmart Hakkında</h3>
+                <p>Walmart Inc., hipermarketler, indirimli mağazalar ve marketlerden oluşan çok uluslu bir perakende şirketidir. Gelir açısından dünyanın en büyük şirketlerinden biri olup, finansal analizler için önemli bir konu haline gelmiştir.</p>
+
+                <h3>🔑 Veri Kümesi Detayları</h3>
+                <p>Veriler, Yahoo Finance API (yfinance) aracılığıyla çekilmiş olup, 2000 yılından itibaren günlük hisse senedi fiyatlarını içermektedir.</p>
+
+                <div class="feature-box">
+                    <h4>Veri Setinde Bulunan Özellikler:</h4>
+                    <ul class="feature-list">
+                        <li><strong>📅 Tarih:</strong> İşlem günü</li>
+                        <li><strong>🟢 Açılış Fiyatı:</strong> Piyasa açılışındaki fiyat</li>
+                        <li><strong>🔼 Yüksek Fiyat:</strong> Günün en yüksek fiyatı</li>
+                        <li><strong>🔽 Düşük Fiyat:</strong> Günün en düşük fiyatı</li>
+                        <li><strong>🔴 Kapanış Fiyatı:</strong> Piyasa kapanışındaki fiyat</li>
+                        <li><strong>📉 Düzeltilmiş Kapanış Fiyatı:</strong> Bölünmeler ve temettüler için düzeltilmiş kapanış fiyatı</li>
+                        <li><strong>📈 İşlem Hacmi:</strong> Günlük işlem gören hisse senedi sayısı</li>
+                        <li><strong>💰 Temettüler:</strong> Hissedarlara yapılan nakit ödemeler</li>
+                        <li><strong>🔄 Hisse Senedi Bölünmeleri:</strong> Bölünme olaylarını kaydeder</li>
+                    </ul>
+                </div>
+
+                <h2><span class="section-emoji">📈</span> 2. Fiyat Trendi Analizi</h2>
+                
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>İstatistik</th>
+                                <th>Açılış</th>
+                                <th>Yüksek</th>
+                                <th>Düşük</th>
+                                <th>Kapanış</th>
+                                <th>Hacim</th>
+                                <th>Temettü</th>
+                                <th>Bölünme</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sayım</td>
+                                <td>13233.00</td>
+                                <td>13233.00</td>
+                                <td>13233.00</td>
+                                <td>13233.00</td>
+                                <td>1.3233e+04</td>
+                                <td>13233.00</td>
+                                <td>13233.00</td>
+                            </tr>
+                            <tr>
+                                <td>Ortalama</td>
+                                <td>11.94</td>
+                                <td>12.05</td>
+                                <td>11.84</td>
+                                <td>11.94</td>
+                                <td>2.2441e+07</td>
+                                <td>0.0002</td>
+                                <td>0.0015</td>
+                            </tr>
+                            <tr>
+                                <td>Std. Sapma</td>
+                                <td>15.85</td>
+                                <td>15.97</td>
+                                <td>15.73</td>
+                                <td>15.86</td>
+                                <td>1.8390e+07</td>
+                                <td>0.0116</td>
+                                <td>0.0582</td>
+                            </tr>
+                            <tr>
+                                <td>Minimum</td>
+                                <td>0.0028</td>
+                                <td>0.0028</td>
+                                <td>0.0026</td>
+                                <td>0.0028</td>
+                                <td>0.0000</td>
+                                <td>0.0000</td>
+                                <td>0.0000</td>
+                            </tr>
+                            <tr>
+                                <td>Maksimum</td>
+                                <td>105.30</td>
+                                <td>105.30</td>
+                                <td>103.59</td>
+                                <td>105.05</td>
+                                <td>3.9550e+08</td>
+                                <td>0.2080</td>
+                                <td>3.0000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="analysis-box">
+                    <h3>📊 Fiyat Aralığı Analizi</h3>
+                    <p>Walmart hisse senedi fiyatları tarihsel süreçte geniş bir aralıkta hareket etmiştir. Veriler incelendiğinde:</p>
+                    <ul>
+                        <li>En düşük fiyat: <strong>0.002 dolar</strong> seviyesine kadar gerilemiş</li>
+                        <li>En yüksek fiyat: <strong>105 dolar</strong> seviyesine kadar yükselmiş</li>
+                        <li>Ortalama fiyat: Yaklaşık <strong>12 dolar</strong> civarında seyretmiş</li>
+                        <li>Standart sapma: Yaklaşık <strong>16 dolar</strong> ile yüksek bir değişkenlik göstermiş</li>
+                    </ul>
+                    <p>Bu geniş fiyat aralığı, şirketin uzun vadeli büyümesini ve piyasa değerindeki önemli artışı göstermektedir.</p>
+                </div>
+
+                <h2><span class="section-emoji">📊</span> 3. İstatistiksel Göstergeler</h2>
+
+                <div class="chart-section">
+                    <h3>Walmart Hisse Senedi Fiyat Değişimi (2000-2025)</h3>
+                    <div class="chart-container">
+                        <img src="../images/walmart-history.jpg" alt="Walmart Hisse Senedi Fiyat Grafiği" class="analysis-chart">
+                    </div>
+                    <div class="chart-description">
+                        <p>Grafikte, 2008 Finansal Krizi ve COVID-19 pandemisi gibi önemli olaylar işaretlenmiştir. Özellikle 2016 sonrası fiyatlarda güçlü bir yükseliş gözlemlenmiştir.</p>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <h3>Mevsimsel Bileşenler</h3>
+                    <div class="chart-container">
+                        <img src="../images/walmart-seasonal.jpg" alt="Walmart Hisse Senedi Mevsimsel Analiz" class="analysis-chart">
+                    </div>
+                    <div class="chart-description">
+                        <p>Yılın belirli dönemlerinde fiyatlarda yükseliş ve düşüşler gözlemlenmiştir. Kasım aylarında yükselişler dikkat çekerken, yaz aylarında düşüş eğilimi görülmektedir.</p>
+                        <ul class="seasonal-highlights">
+                            <li><strong>Yükseliş Dönemleri:</strong> Kasım ayı (Black Friday ve yılbaşı alışverişleri etkisi)</li>
+                            <li><strong>Düşüş Dönemleri:</strong> Yaz ayları (özellikle Haziran-Temmuz)</li>
+                            <li><strong>Nötr Dönemler:</strong> İlkbahar ve sonbahar başlangıcı</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <h3>Oynaklık (Standart Sapma)</h3>
+                    <div class="chart-container">
+                        <img src="../images/walmart-standart.png" alt="Walmart Hisse Senedi Oynaklık Analizi" class="analysis-chart">
+                    </div>
+                    <div class="chart-description">
+                        <p>Grafikten de görüldüğü üzere hisse yılların belirli zamanlarında inişe geçse de yükselen trende sahiptir. 2000-2016 arası daha durağan geçse de 2016 sonrası yükseliş trendi güçlenmiştir.</p>
+                        
+                        <p>Mevsimselliğe bakıldığında yılın belirli dönemlerinde hisse fiyatı yükselip düşüyor. Bu yükselmeler kasım aylarında görülürken düşüşler yaz aylarında görülmekte. Artık bileşen grafiğine bakıldığında 2016 sonrası belirgin bir dalgalanma var ve bu 2020 sonrası devam etmekte yani hissenin fiyatını takip etmesi zor hale gelmiştir.</p>
+                        
+                        <p>Standart sapma grafiğinde de bu durum açıkça görülmekte. 2020 sonrası oynaklık artışı dikkat çekmektedir. Bu durum, piyasanın daha volatil bir hale geldiğini göstermektedir.</p>
+                        
+                        <div class="volatility-analysis">
+                            <h4>Önemli Oynaklık Dönemleri:</h4>
+                            <ul>
+                                <li><strong>2000-2016:</strong> Göreceli durağan dönem</li>
+                                <li><strong>2016-2020:</strong> Artan trend ve dalgalanma</li>
+                                <li><strong>2020 COVID-19 Dönemi:</strong> En yüksek oynaklık seviyesi</li>
+                                <li><strong>2020 Sonrası:</strong> Yüksek volatilite devam ediyor</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <h3>Trend ve Bileşen Analizi</h3>
+                    <div class="chart-container">
+                        <img src="../images/walmart-component.jpg" alt="Walmart Hisse Senedi Bileşen Analizi" class="analysis-chart">
+                    </div>
+                    <div class="chart-description">
+                        <p>Standart sapma grafiğinde de bu durum açıkça görülmekte. 2020 sonrası oynaklık artışı dikkat çekmektedir. Bu durum, piyasanın daha volatil bir hale geldiğini göstermektedir.</p>
+                        <div class="component-analysis">
+                            <h4>Analiz Bileşenleri:</h4>
+                            <ul>
+                                <li><strong>Orijinal Veri:</strong> Ham fiyat hareketleri</li>
+                                <li><strong>Trend:</strong> Uzun vadeli yükseliş eğilimi</li>
+                                <li><strong>Mevsimsellik:</strong> Düzenli tekrar eden döngüler</li>
+                                <li><strong>Artık:</strong> Açıklanamayan fiyat hareketleri</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <h2><span class="section-emoji">🔄</span> 4. Mevsimsel Analiz</h2>
+                    <div class="chart-container">
+                        <img src="../images/walmart-last.png" alt="Walmart Hisse Senedi Yıllık Performans" class="analysis-chart">
+                    </div>
+                    <div class="chart-description">
+                        <p>Grafikte, Walmart'ın yıllık kapanış fiyatlarına göre kar ve zarar oranları gösterilmiştir. Uzun vadeli yatırımcılar için genel olarak pozitif bir performans sergilenmiştir.</p>
+                    </div>
+                </div>
+
+                <div class="conclusions-section">
+                    <h2><span class="section-emoji">🎯</span> 5. Sonuçlar</h2>
+                    <div class="key-findings">
+                        <h3>🔍 Önemli Bulgular</h3>
+                        <ul>
+                            <li>📈 Hisse senedi fiyatı genel olarak yükseliş trendinde</li>
+                            <li>📊 Volatilite son dönemde artış gösterdi</li>
+                            <li>🔄 Güçlü mevsimsel örüntüler tespit edildi</li>
+                            <li>📉 COVID-19 döneminde belirgin dalgalanmalar yaşandı</li>
+                        </ul>
+                    </div>
+
+                    <div class="recommendations">
+                        <h3>💡 Öneriler</h3>
+                        <ul>
+                            <li>📈 Uzun vadeli yatırım için uygun görünüyor</li>
+                            <li>⚠️ Volatilite yönetimi için stop-loss kullanılmalı</li>
+                            <li>📊 Mevsimsel örüntüler trading stratejisine dahil edilmeli</li>
+                            <li>🔄 Düzenli portföy rebalansı öneriliyor</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Yorum bölümü -->
+            <section class="comments-section">
+                <div class="section-header">
+                    <h3><i class="fas fa-comments"></i> Yorumlar</h3>
+                    <p class="comment-count">0 yorum</p>
+                </div>
+                
+                <div class="comments-list">
+                    <!-- Yorumlar dinamik olarak buraya eklenecek -->
+                </div>
+
+                <div class="comment-form-container">
+                    <h4>Yorum Yap</h4>
+                    <form class="comment-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">
+                                    <i class="fas fa-user"></i>
+                                    İsminiz
+                                </label>
+                                <input type="text" name="name" id="name" placeholder="İsminizi girin" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">
+                                <i class="fas fa-pen"></i>
+                                Yorumunuz
+                            </label>
+                            <textarea name="comment" id="comment" rows="4" placeholder="Düşüncelerinizi paylaşın..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Yorum Gönder
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </article>
+
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2>Bültene Abone Olun</h2>
+                    <p>En son analizler ve piyasa görüşleri için bültenimize abone olun.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="E-posta adresiniz" required>
+                        <button type="submit" class="btn">Abone Ol</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>Insight</span>Analytics
+                    <p>Veri odaklı kararlar için yanınızdayız</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Medium"><i class="fab fa-medium"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/theme.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="../js/comments.js"></script>
+</body>
+</html>

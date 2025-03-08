@@ -1,0 +1,17 @@
+This directory should contain the following images:
+
+1. stock-analysis.jpg - Stock market analysis charts and graphs
+2. data-visualization.jpg - Data visualization examples
+3. market-analysis.jpg - Market trend analysis
+4. bull-bear.jpg - Bull and bear market illustration
+5. python-data.jpg - Python code or data science illustration
+6. global-markets.jpg - Global market visualization
+7. retirement.jpg - Retirement planning illustration
+8. investment.jpg - Investment strategy illustration
+9. sustainable-investing.jpg - Sustainable investment visualization
+10. author.jpg - Author profile photo
+11. avatar1.jpg - Comment avatar 1
+12. avatar2.jpg - Comment avatar 2
+13. avatar3.jpg - Comment avatar 3
+
+Please add appropriate images here to complete the website's visual design. You can use stock photos or create custom graphics that match your brand identity.

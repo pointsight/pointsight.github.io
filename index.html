@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsightAnalytics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="index.html">
+                        <span>Insight</span>Analytics
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Ana Sayfa</a></li>
+                    <li><a href="posts/walmart-stock-analysis.html">Blog</a></li>
+                    <li><a href="about.html">Hakkında</a></li>
+                    <li><a href="contact.html">İletişim</a></li>
+                </ul>
+                <button class="theme-toggle" aria-label="Tema Değiştir">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Veri Analizi ve Finansal İçgörüler</h1>
+                    <p>Borsa analizleri, finansal tahminler ve veri bilimi çalışmaları.</p>
+                    <a href="posts/walmart-stock-analysis.html" class="btn">Blog Yazılarını Oku</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-posts">
+            <div class="container">
+                <h2 class="section-title">Öne Çıkan Yazılar</h2>
+                <div class="blog-posts-grid">
+                    <div class="blog-post">
+                        <div class="post-image">
+                            <a href="posts/samsung-mobile-analysis.html">
+                                <img src="./images/samsung-analysis/samsung.jpg" alt="Samsung Mobil Cihaz Analizi">
+                            </a>
+                        </div>
+                        <div class="post-content">
+                            <h3><a href="posts/samsung-mobile-analysis.html">Samsung Mobil Cihaz Satış Analizi</a></h3>
+                            <p>Samsung'un son beş yıldaki mobil cihaz satış performansının detaylı analizi.</p>
+                            <a href="posts/samsung-mobile-analysis.html" class="read-more">Devamını Oku →</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post">
+                        <div class="post-image">
+                            <a href="posts/walmart-stock-analysis.html">
+                                <img src="./images/walmart.webp" alt="Walmart Hisse Senedi Analizi">
+                            </a>
+                        </div>
+                        <div class="post-content">
+                            <h3><a href="posts/walmart-stock-analysis.html">Walmart Hisse Senedi Analizi</a></h3>
+                            <p>Python ve yfinance API kullanarak gerçekleştirilen detaylı borsa analizi.</p>
+                            <a href="posts/walmart-stock-analysis.html" class="read-more">Devamını Oku →</a>
+                        </div>
+                    </div>
+
+                    <div class="blog-post">
+                        <div class="post-image">
+                            <a href="posts/data-visualization.html">
+                                <img src="./images/data-visualization.jpg" alt="Veri Görselleştirme">
+                            </a>
+                        </div>
+                        <div class="post-content">
+                            <h3><a href="posts/data-visualization.html">Veri Görselleştirme</a></h3>
+                            <p>Modern veri görselleştirme teknikleri ve finansal analizde kullanımı.</p>
+                            <a href="posts/data-visualization.html" class="read-more">Devamını Oku →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2>Bültene Abone Olun</h2>
+                    <p>En son analizler ve piyasa görüşleri için bültenimize abone olun.</p>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="email" placeholder="E-posta adresiniz" required>
+                        <button type="submit" class="btn">Abone Ol</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Hakkımızda</h3>
+                    <p>Finansal piyasalar ve veri analizi konularında güncel bilgiler ve detaylı analizler sunuyoruz.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Hızlı Bağlantılar</h3>
+                    <ul>
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="posts/walmart-stock-analysis.html">Veri Analizi</a></li>
+                        <li><a href="posts/market-analysis.html">Borsa</a></li>
+                        <li><a href="about.html">Hakkında</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Bizi Takip Edin</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link linkedin">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link github">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tema değiştirici
+        const themeToggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+        const themeIcon = themeToggle.querySelector('i');
+
+        // Kaydedilmiş temayı kontrol et
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            themeIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+    </script>
+</body>
+</html>
