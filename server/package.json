@@ -1,5 +1,5 @@
 {
-  "name": "insight-analytics-server",
+  "name": "pointsight-server",
   "version": "1.0.0",
   "description": "Blog comment system for PointSight",
   "main": "server.js",
