@@ -7,191 +7,251 @@
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <a href="../index.html">
-                        <span>Point</span>Sight
-                    </a>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="../index.html">Ana Sayfa</a></li>
-                    <li><a href="../posts/walmart-stock-analysis.html" class="active">Blog</a></li>
-                    <li><a href="../about.html">Hakkında</a></li>
-                    <li><a href="../contact.html">İletişim</a></li>
-                </ul>
-                <button class="theme-toggle" aria-label="Tema Değiştir">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </nav>
-        </div>
-    </header>
-
     <style>
-        /* Blog içeriği için özel stiller */
-        .post-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
+        /* Header stili */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--background);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            padding: 0.5rem 0;
         }
-
+        
+        /* Ana içerik için margin */
+        .post-content {
+            margin-top: 0;
+            padding: 1rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Post banner */
+        .post-banner {
+            width: 100%;
+            height: 100px;
+            background: var(--light-background);
+            margin-top: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .post-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .post-banner-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .post-banner h2 {
+            font-size: 1.6rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .post-banner p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        /* Blog başlıkları için stiller */
         .post-header {
+            text-align: center;
             margin-bottom: 2rem;
         }
-
+        
         .post-header h1 {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .post-body h2 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            text-align: center;
+        }
+        
+        .post-body h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .post-image {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .post-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .post-meta {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        /* Responsive ayarlamalar */
+        @media (max-width: 768px) {
+            .post-content {
+                margin-top: 0;
+            }
+            
+            .post-banner {
+                height: 80px;
+                margin-top: 60px;
+            }
+            
+            .post-banner h2 {
+                font-size: 1.4rem;
+            }
+            
+            .post-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .post-body h2 {
+                font-size: 1.3rem;
+            }
+            
+            .post-body h3 {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .post-content {
+                margin-top: 0;
+                padding: 0.5rem;
+            }
+            
+            .post-banner {
+                height: 70px;
+                margin-top: 50px;
+            }
+            
+            .post-banner h2 {
+                font-size: 1.2rem;
+            }
+            
+            .post-header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .post-body h2 {
+                font-size: 1.2rem;
+            }
+            
+            .post-body h3 {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Custom styles for this post */
+        .chart-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .chart-container img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .analysis-section {
+            margin-bottom: 2rem;
+        }
+        
+        .analysis-section h2 {
+            font-size: 1.2rem;
             margin-bottom: 1rem;
             color: var(--text-color);
         }
-
-        .post-meta {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-muted);
+        
+        .analysis-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
         }
-
-        .post-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-
-        .tag {
-            background: var(--light-background);
-            color: var(--primary-color);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .tag:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .post-image img {
-            width: 100%;
-            height: auto;
-            border-radius: var(--border-radius);
-            margin-bottom: 2rem;
-        }
-
-        .chart-section {
-            background: var(--light-background);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            margin: 2rem 0;
-            border: 1px solid var(--border-color);
-        }
-
-        .chart-container {
-            width: 100%;
-            margin-bottom: 1.5rem;
-            background: white;
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .analysis-chart {
-            width: 100%;
-            height: auto;
-            border-radius: var(--border-radius);
-        }
-
-        .data-table-container {
-            overflow-x: auto;
-            margin: 2rem 0;
-            background: var(--light-background);
-            border-radius: var(--border-radius);
-            padding: 1rem;
-            border: 1px solid var(--border-color);
-        }
-
+        
         .data-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.9rem;
+            margin: 1.5rem 0;
         }
-
-        .data-table th,
-        .data-table td {
-            padding: 0.75rem;
-            text-align: right;
-            border: 1px solid var(--border-color);
+        
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+            text-align: left;
         }
-
+        
         .data-table th {
-            background-color: var(--primary-color);
-            color: white;
-            font-weight: 500;
+            background-color: var(--light-background);
         }
-
-        .conclusions-section {
-            background: var(--light-background);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            margin: 2rem 0;
-            border: 1px solid var(--border-color);
-        }
-
-        .key-findings,
-        .recommendations {
-            background: white;
-            padding: 1.5rem;
-            border-radius: var(--border-radius);
-            margin: 1rem 0;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .recommendations {
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .key-findings ul,
-        .recommendations ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .key-findings li,
-        .recommendations li {
-            margin: 0.75rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        .key-findings li::before {
-            content: "✓";
-            color: var(--primary-color);
-            position: absolute;
-            left: 0;
-        }
-
-        .recommendations li::before {
-            content: "→";
-            color: var(--primary-color);
-            position: absolute;
-            left: 0;
+        
+        .data-table tr:nth-child(even) {
+            background-color: var(--light-background);
         }
     </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="../index.html">
+                    <span>Point</span>Sight
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Ana Sayfa</a></li>
+                <li><a href="../posts/" class="active">Blog</a></li>
+                <li><a href="../contact.html">İletişim</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="Tema Değiştir">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <div class="post-banner">
+        <div class="post-banner-content">
+            <h2>Finansal Analiz</h2>
+            <p>Borsa ve Hisse Senedi Değerlendirmeleri</p>
+        </div>
+    </div>
 
     <main>
         <article class="post-content container">
+            <div class="post-featured-image">
+                <img src="../images/walmart.webp" alt="Walmart Hisse Senedi Analizi">
+            </div>
+
             <header class="post-header">
                 <h1><span class="section-emoji">📊</span> Walmart Hisse Senedi Fiyat Analizi ve Zaman Serisi Modellemesi</h1>
                 <div class="post-meta">
                     <span class="post-date">📅 7 Mart 2025</span>
-                    <span class="post-author">👤 Ali Volkan Çınar</span>
+                    <span class="post-author">👤 PointSight Analiz Ekibi</span>
                     <span class="post-read-time">⏱️ 10 dk okuma</span>
                 </div>
                 <div class="post-tags">
@@ -200,10 +260,6 @@
                     <a href="#" class="tag">📈 Veri Bilimi</a>
                 </div>
             </header>
-
-            <div class="post-image">
-                <img src="../images/walmart.webp" alt="Walmart Hisse Senedi Analizi">
-            </div>
 
             <div class="post-body">
                 <div class="analysis-card">

@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğrencilerin Kitap Okuma Alışkanlıkları Analizi | PointSight</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Header stili */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--background);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            padding: 0.5rem 0;
+        }
+        
+        /* Ana içerik için margin */
+        .post-container {
+            margin-top: 0;
+            padding: 1rem;
+        }
+        
+        /* Blog başlıkları için stiller */
+        .research-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        /* Post banner */
+        .post-banner {
+            width: 100%;
+            height: 100px;
+            background: var(--light-background);
+            margin-top: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .post-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .post-banner-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .post-banner h2 {
+            font-size: 1.6rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .post-banner p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        /* Blog başlıkları için stiller */
+        .research-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .research-header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .research-section h2 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            text-align: center;
+        }
+        
+        .step-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .post-featured-image {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .post-featured-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .meta, .post-tags {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        /* Chart container styles */
+        .chart-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .chart-container img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .analysis-section {
+            margin-bottom: 2rem;
+        }
+        
+        .analysis-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .analysis-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        
+        .data-table th {
+            background-color: var(--light-background);
+        }
+        
+        .data-table tr:nth-child(even) {
+            background-color: var(--light-background);
+        }
+        
+        /* Responsive ayarlamalar */
+        @media (max-width: 768px) {
+            .post-container {
+                margin-top: 0;
+            }
+            
+            .post-banner {
+                height: 80px;
+                margin-top: 60px;
+            }
+            
+            .post-banner h2 {
+                font-size: 1.4rem;
+            }
+            
+            .research-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .research-section h2 {
+                font-size: 1.3rem;
+            }
+            
+            .step-content h3 {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .post-container {
+                margin-top: 0;
+                padding: 0.5rem;
+            }
+            
+            .post-banner {
+                height: 70px;
+                margin-top: 50px;
+            }
+            
+            .post-banner h2 {
+                font-size: 1.2rem;
+            }
+            
+            .research-header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .research-section h2 {
+                font-size: 1.2rem;
+            }
+            
+            .step-content h3 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="../index.html">
+                    <span>Point</span>Sight
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Ana Sayfa</a></li>
+                <li><a href="../posts/">Blog</a></li>
+                <li><a href="../contact.html">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="post-banner">
+        <div class="post-banner-content">
+            <h2>Araştırma Makalesi</h2>
+            <p>TÜBİTAK 2209-A Projesi Sonuçları</p>
+        </div>
+    </div>
+
+    <main class="post-container">
+        <article class="research-container">
+            <header class="research-header">
+                <h1><span class="section-emoji">📚</span> Öğrencilerin Kitap Okuma Alışkanlıklarını Etkileyen Faktörlerin Analizi</h1>
+                <div class="meta">
+                    <span class="post-date">📅 9 Mart 2025</span>
+                    <span class="post-author">👤 PointSight Analiz Ekibi</span>
+                    <span class="post-read-time">⏱️ 8 dk okuma</span>
+                </div>
+                <div class="post-tags">
+                    <a href="#" class="tag">📊 Veri Analizi</a>
+                    <a href="#" class="tag">🎓 Eğitim</a>
+                    <a href="#" class="tag">🐍 Python</a>
+                    <a href="#" class="tag">📈 R</a>
+                </div>
+            </header>
+
+            <div class="post-featured-image">
+                <img src="../images/reading.jpg" alt="Kitap Okuma Alışkanlıkları Araştırması">
+            </div>
+
+            <section class="research-section">
+                <h2>📋 Araştırma Metodolojisi</h2>
+                <div class="methodology-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Veri Toplama</h3>
+                            <p>Demografik sorular içeren kapsamlı bir anket formu oluşturuldu ve üniversite öğrencilerine uygulandı.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Veri Analizi</h3>
+                            <p>R ve Python kullanılarak sıfır yığılmalı regresyon analizleri gerçekleştirildi.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Makine Öğrenmesi</h3>
+                            <p>İleri düzey sınıflandırma algoritmaları ile tahmin modelleri oluşturuldu.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="research-section">
+                <h2>🎯 Araştırmanın Amacı</h2>
+                <p>Bu çalışma, aşağıdaki hedeflere ulaşmayı amaçlamaktadır:</p>
+                <ul class="custom-list">
+                    <li>Üniversite öğrencilerinin okuma alışkanlıklarını etkileyen faktörlerin belirlenmesi</li>
+                    <li>Eğitim politikaları ve stratejilerinin geliştirilmesine katkı sağlanması</li>
+                    <li>Bireysel ve toplumsal gelişime yönelik önerilerin sunulması</li>
+                    <li>Üniversite yönetimleri ve eğitim politikacıları için veri temelli içgörüler sağlanması</li>
+                </ul>
+            </section>
+
+            <section class="research-section">
+                <h2>📊 Veri Analizi ve Bulgular</h2>
+                
+                <div class="data-visualization">
+                    <figure class="chart-figure">
+                        <img src="../images/ogrenci1.png" alt="Cinsiyet dağılımına ilişkin pasta grafiği" class="analysis-chart" loading="lazy">
+                        <figcaption>Şekil 1: Cinsiyet dağılımına ilişkin pasta grafiği</figcaption>
+                    </figure>
+                    <div class="analysis-text">
+                        <p>Çalışmaya katılan 326 öğrenciden 113 (%34.7) ü erkek ve 213 (%65.3) ü kadındır (Tablo 1 ve Şekil 1).</p>
+                    </div>
+                </div>
+
+                <div class="data-visualization">
+                    <figure class="chart-figure">
+                        <img src="../images/image.png" alt="Spor yapmaya ilişkin pasta grafiği" class="analysis-chart" loading="lazy">
+                        <figcaption>Şekil 5: Spor yapmaya ilişkin pasta grafiği</figcaption>
+                    </figure>
+                    <div class="analysis-text">
+                        <p>Çalışmaya katılan 326 öğrenciden 134(%41,1)'ü spor yaparken, 192(%58,9)'si spor yapmamaktadır (Tablo 5 ve Şekil 5).</p>
+                    </div>
+                </div>
+
+                <div class="data-visualization">
+                    <figure class="chart-figure">
+                        <img src="../images/ogrenci2.png" alt="Anne eğitim düzeyine ilişkin pasta grafiği" class="analysis-chart" loading="lazy">
+                        <figcaption>Şekil 6.1: Anne eğitim düzeyine ilişkin pasta grafiği</figcaption>
+                    </figure>
+                    <div class="analysis-text">
+                        <p>Çalışmaya katılan 326 öğrenciden 175(%53,6)'i Anne eğitim düzeyi ilköğretim, 78(%23,9)'i Lise, 72(%22,1)'si Üniversite ve 1(%0,3)'i Yüksek lisans ve üzeri olmaktadır (Tablo 6, Şekil 6.1 ve Şekil 6.2).</p>
+                    </div>
+                </div>
+
+                <div class="data-visualization">
+                    <figure class="chart-figure">
+                        <img src="../images/ogrenci3.png" alt="Baba eğitim düzeyine ilişkin pasta grafiği" class="analysis-chart" loading="lazy">
+                        <figcaption>Şekil 7.1: Baba eğitim düzeyine ilişkin pasta grafiği</figcaption>
+                    </figure>
+                    <div class="analysis-text">
+                        <p>Çalışmaya katılan 326 öğrencinin baba eğitim düzeyinin 132(%40,4)'si İlköğretim, 116(%35,5)'sı Lise, 68(%20,8)'i Üniversite ve 10(%3,1)'u Yüksek Lisans ve üzeri olmaktadır (Tablo 7, Şekil 7.1 ve Şekil 7.2).</p>
+                    </div>
+                </div>
+
+                <div class="data-visualization">
+                    <figure class="chart-figure">
+                        <img src="../images/ogrenci4.png" alt="Ailenin hangi bölgede yaşadığına ilişkin grafik" class="analysis-chart" loading="lazy">
+                        <figcaption>Şekil 9: Ailenin hangi bölgede yaşadığına ilişkin grafik</figcaption>
+                    </figure>
+                    <div class="analysis-text">
+                        <p>Çalışmaya katılan 326 öğrencinin ailesinden 153(%46,9)'ü İç Anadolu, 57(%17,5)'si Akdeniz, 45(%13,8)'i Marmara, 31(%9,5)'i Ege, 15(%4,6)'i Güney Doğu Anadolu, 13(%4)'ü Karadeniz, 12(%3,7)'si Doğu Anadoluda yaşamaktadır.</p>
+                    </div>
+                </div>
+
+                <div class="data-visualization">
+                    <figure class="chart-figure">
+                        <img src="../images/ogrenci5.png" alt="Eğitim görülen fakülteye ilişkin grafik" class="analysis-chart" loading="lazy">
+                        <figcaption>Şekil 11: Eğitim görülen fakülteye ilişkin grafik</figcaption>
+                    </figure>
+                    <div class="analysis-text">
+                        <p>Çalışmaya katılan 326 öğrenciden 139(%42,6)'u Mühendislik ve Fen Bilimleri, 86(%26,4)'sı Edebiyat, 55(%16,9)'i Sağlık Bilimleri, 24(%7,4)'ü İktisadi ve İdari Bilimler, 15(%4,6)'i Eğitim Bilimleri ve 7(%2,1)'si Güzel Sanatlar Bilimleri Tabanlı fakültelerde okumaktadırlar (Tablo 11, ve Şekil 11).</p>
+                    </div>
+                </div>
+
+                <div class="data-visualization">
+                    <figure class="chart-figure">
+                        <img src="../images/ogrenci6.png" alt="Alkol kullanımına ilişkin pasta grafiği" class="analysis-chart" loading="lazy">
+                        <figcaption>Şekil 12: Alkol kullanımına ilişkin pasta grafiği</figcaption>
+                    </figure>
+                    <div class="analysis-text">
+                        <p>Çalışmaya katılan 326 öğrenciden 66(%20,2)'sı alkol kullanırken 260(%79,8)'ı alkol kullanmamaktadır (Tablo 12 ve Şekil 12).</p>
+                    </div>
+                </div>
+
+                <div class="data-visualization">
+                    <figure class="chart-figure">
+                        <img src="../images/ogrenci7.png" alt="Eğlence ve Sosyal aktivitelere katılma sıklığına ilişkin grafik" class="analysis-chart" loading="lazy">
+                        <figcaption>Şekil 15.1: Eğlence ve Sosyal aktivitelere katılma sıklığına ilişkin grafik</figcaption>
+                    </figure>
+                    <div class="analysis-text">
+                        <p>Çalışmaya katılan 326 öğrenciden eğlence ve sosyal aktivitelere katılma sıklığı 5 üzerinden 107(%32,8)'si 3, 70(%21,5)'i 2, 50(%15,3)'si 4, 41(%12,6)'i 5, 38(%11,7)'i 1 ve 20(%6,1)'si 0'dır (Tablo 15, Şekil 15.1 ve Şekil 15.2).</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="statistical-section">
+                <h2>📊 İstatistiksel Analizler</h2>
+                
+                <div class="statistical-table">
+                    <h3>Tablo 16: GANO, Aylık Harcama ve Akademik Veriler</h3>
+                    <div class="table-container">
+                        <table class="stats-table">
+                            <thead>
+                                <tr>
+                                    <th>Değişken</th>
+                                    <th>N</th>
+                                    <th>Ortalama</th>
+                                    <th>Medyan</th>
+                                    <th>Std. Sapma</th>
+                                    <th>Maksimum</th>
+                                    <th>Minimum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>GANO</td>
+                                    <td>283</td>
+                                    <td>2,86</td>
+                                    <td>2,91</td>
+                                    <td>0,49</td>
+                                    <td>4</td>
+                                    <td>1,43</td>
+                                </tr>
+                                <tr>
+                                    <td>Aylık Ortalama Harcama</td>
+                                    <td>326</td>
+                                    <td>4369,5</td>
+                                    <td>4000</td>
+                                    <td>2555,67</td>
+                                    <td>9687,5</td>
+                                    <td>200</td>
+                                </tr>
+                                <tr>
+                                    <td>Son Bir Ayda Okunan Kitap Sayısı</td>
+                                    <td>326</td>
+                                    <td>2,04</td>
+                                    <td>2</td>
+                                    <td>2,05</td>
+                                    <td>20</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>Alttan Alınan Ders Sayısı</td>
+                                    <td>326</td>
+                                    <td>1,32</td>
+                                    <td>0</td>
+                                    <td>2,17</td>
+                                    <td>10</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="statistical-highlight">
+                        <p>Ankete katılan 326 öğrencinin 283 tanesi genel ağırlıklı not ortalaması (GANO) sorusuna cevap vermiş ve ortalama GANO <span class="stat-value">2,86±0,49</span> olarak gözlemlenmiştir. Aylık ortalama harcama ortalaması <span class="stat-value">4369,5±2555,67</span>; son bir ayda okunan kitap sayısı ortalaması <span class="stat-value">2,04±2,05</span> ve alttan alınan ders sayısı <span class="stat-value">1,32±2,17</span> şeklinde tespit edilmiştir (Tablo 16).</p>
+                    </div>
+                </div>
+
+                <div class="statistical-table">
+                    <h3>Tablo 17: Cinsiyet ile Kitap Okuma Alışkanlığı İlişkisi</h3>
+                    <div class="table-container">
+                        <table class="cross-table">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" rowspan="2">Kitap Okuma Alışkanlığı</th>
+                                    <th colspan="2">Cinsiyet</th>
+                                    <th rowspan="2">Toplam</th>
+                                </tr>
+                                <tr>
+                                    <th>Erkek</th>
+                                    <th>Kadın</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="2">Evet</td>
+                                    <td>n</td>
+                                    <td>54</td>
+                                    <td>139</td>
+                                    <td>193</td>
+                                </tr>
+                                <tr>
+                                    <td>Beklenen n</td>
+                                    <td>66,9</td>
+                                    <td>126,1</td>
+                                    <td>193,0</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">Hayır</td>
+                                    <td>n</td>
+                                    <td>59</td>
+                                    <td>74</td>
+                                    <td>133</td>
+                                </tr>
+                                <tr>
+                                    <td>Beklenen n</td>
+                                    <td>46,1</td>
+                                    <td>86,9</td>
+                                    <td>133,0</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">Toplam</td>
+                                    <td>n</td>
+                                    <td>113</td>
+                                    <td>213</td>
+                                    <td>326</td>
+                                </tr>
+                                <tr>
+                                    <td>Beklenen n</td>
+                                    <td>113,0</td>
+                                    <td>213,0</td>
+                                    <td>326,0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="statistical-highlight">
+                        <p>Ki-kare değeri: <span class="stat-value">9,330</span>; p-değeri: <span class="stat-value">0,002</span>; Cramér's V değeri: <span class="stat-value">0,169</span></p>
+                        <p>p-değeri 0,002<0,10 olduğu için ve Cramér's V değeri 0,169 olduğu için, cinsiyet ile kitap okuma alışkanlığı arasında %90 güven aralığında istatistiksel olarak orta düzeyde anlamlı bir ilişki olduğunu söyleyebiliriz. Kadınların kitap okuma alışkanlığı olma oranı %72 iken, erkeklerin oranı %28 olarak görülmüştür. Bu oranlar, kadınların kitap okuma alışkanlığına sahip olma oranının erkeklerden daha yüksek olduğunu ve orta düzeyde bir ilişki gücüne sahip olduğunu göstermektedir.</p>
+                    </div>
+                </div>
+
+                <div class="statistical-table">
+                    <h3>Tablo 19: Baba Eğitim Düzeyi ve Kitap Okuma Alışkanlığı İlişkisi</h3>
+                    <div class="table-container">
+                        <table class="cross-table">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">Kitap Okuma Alışkanlığı</th>
+                                    <th colspan="4">Baba Eğitim Düzeyi</th>
+                                    <th rowspan="2">Toplam</th>
+                                </tr>
+                                <tr>
+                                    <th>İlkokul</th>
+                                    <th>Lise</th>
+                                    <th>Üniversite</th>
+                                    <th>Yüksek Lisans Ve Üzeri</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Evet</td>
+                                    <td>71</td>
+                                    <td>68</td>
+                                    <td>50</td>
+                                    <td>4</td>
+                                    <td>193</td>
+                                </tr>
+                                <tr>
+                                    <td>Hayır</td>
+                                    <td>61</td>
+                                    <td>48</td>
+                                    <td>18</td>
+                                    <td>6</td>
+                                    <td>133</td>
+                                </tr>
+                                <tr>
+                                    <td>Toplam</td>
+                                    <td>132</td>
+                                    <td>116</td>
+                                    <td>68</td>
+                                    <td>10</td>
+                                    <td>326</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="statistical-highlight">
+                        <p><strong>İstatistiksel Analiz:</strong></p>
+                        <ul>
+                            <li>Ki-kare değeri: <span class="stat-value">8,897</span></li>
+                            <li>p-değeri: <span class="stat-value">0,031</span></li>
+                        </ul>
+                        <p>Analiz sonuçları %90 güven aralığında şunları göstermektedir:</p>
+                        <ul>
+                            <li>Baba eğitim düzeyinin kitap okuma alışkanlığı üzerinde istatistiksel olarak anlamlı bir etkisi vardır</li>
+                            <li>En yüksek kitap okuma oranı üniversite mezunu babaların çocuklarında görülmektedir (%73)</li>
+                            <li>İlkokul mezunu babaların çocuklarında bu oran %51'dir</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="statistical-table">
+                    <h3>Tablo 21: Kitap Okuma Alışkanlığının GANO Üzerindeki Etkisi</h3>
+                    <div class="table-container">
+                        <table class="stats-table">
+                            <thead>
+                                <tr>
+                                    <th>Kitap Okuma Alışkanlığı</th>
+                                    <th>N</th>
+                                    <th>Ortalama</th>
+                                    <th>Std. Sapma</th>
+                                    <th>Std. Hata</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="significant-row">
+                                    <td>Evet</td>
+                                    <td>167</td>
+                                    <td>2,91</td>
+                                    <td>0,45</td>
+                                    <td>0,04</td>
+                                </tr>
+                                <tr>
+                                    <td>Hayır</td>
+                                    <td>116</td>
+                                    <td>2,79</td>
+                                    <td>0,54</td>
+                                    <td>0,05</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="statistical-highlight">
+                        <p><strong>İstatistiksel Analiz:</strong></p>
+                        <ul>
+                            <li>t-test istatistik değeri: <span class="stat-value">1,964</span></li>
+                            <li>p-değeri: <span class="stat-value">0,051</span></li>
+                        </ul>
+                        <p>%90 güven aralığında elde edilen bulgular:</p>
+                        <ul>
+                            <li>Kitap okuma alışkanlığı olan ve olmayan öğrencilerin GANO'ları arasında istatistiksel olarak anlamlı bir fark vardır</li>
+                            <li>Kitap okuma alışkanlığı olanların ortalama GANO'su: <span class="stat-value">2,91</span></li>
+                            <li>Kitap okuma alışkanlığı olmayanların ortalama GANO'su: <span class="stat-value">2,79</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="research-methodology">
+                    <h3>📊 Regresyon Analizi Sonuçları</h3>
+                    
+                    <div class="analysis-section">
+                        <h4>R ile Yapılan Analizler</h4>
+                        <div class="table-container">
+                            <table class="stats-table">
+                                <thead>
+                                    <tr>
+                                        <th>Değişken</th>
+                                        <th colspan="2">Sıfır Yığılmalı Poisson</th>
+                                        <th colspan="2">Sıfır Yığılmalı PEE</th>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th>EÇO</th>
+                                        <th>p-değeri</th>
+                                        <th>EÇO</th>
+                                        <th>p-değeri</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Sabit</td>
+                                        <td>0,015</td>
+                                        <td>0,975</td>
+                                        <td>-0,057</td>
+                                        <td>0,935</td>
+                                    </tr>
+                                    <tr class="significant-row">
+                                        <td>Cinsiyet</td>
+                                        <td>0,260</td>
+                                        <td>0,018</td>
+                                        <td>0,408</td>
+                                        <td>0,011</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Anne eğitim</td>
+                                        <td>0,046</td>
+                                        <td>0,414</td>
+                                        <td>0,048</td>
+                                        <td>0,581</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Baba eğitim</td>
+                                        <td>-0,079</td>
+                                        <td>0,179</td>
+                                        <td>-0,061</td>
+                                        <td>0,483</td>
+                                    </tr>
+                                    <tr class="significant-row">
+                                        <td>Spor</td>
+                                        <td>-0,222</td>
+                                        <td>0,028</td>
+                                        <td>-0,287</td>
+                                        <td>0,059</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="statistical-highlight">
+                            <p><strong>Model Karşılaştırması:</strong></p>
+                            <ul>
+                                <li>Sıfır Yığılmalı Poisson AIC: <span class="stat-value">1263,801</span></li>
+                                <li>Sıfır Yığılmalı PEE AIC: <span class="stat-value">1255,116</span></li>
+                            </ul>
+                            <p>Önemli Bulgular:</p>
+                            <ul>
+                                <li>PEE regresyon modeli daha iyi performans göstermiştir (düşük AIC değeri)</li>
+                                <li>Cinsiyet ve spor, kitap okuma üzerinde en etkili değişkenlerdir</li>
+                                <li>Her iki modelde de benzer sonuçlar elde edilmiştir</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="analysis-section">
+                        <h4>🤖 Makine Öğrenmesi Analizi</h4>
+                        <div class="statistical-highlight">
+                            <p>Random Forest sınıflandırma algoritması ile yapılan analizde:</p>
+                            <ul>
+                                <li>Model, kitap okuma alışkanlığını tahmin etmek için kullanılmıştır</li>
+                                <li>Tüm değişkenlerin etkisi birlikte değerlendirilmiştir</li>
+                                <li>Sonuçlar diğer istatistiksel analizleri desteklemektedir</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="research-section">
+                <h2>📝 Sonuç ve Değerlendirme</h2>
+                <div class="statistical-highlight">
+                    <strong>Önemli Bulgular</strong>
+                    <ul>
+                        <li>Cinsiyet ve kitap okuma alışkanlığı arasında anlamlı bir ilişki vardır (p < 0.01)</li>
+                        <li>Baba eğitim düzeyi kitap okuma alışkanlığını etkilemektedir (p < 0.05)</li>
+                        <li>Kitap okuyan öğrencilerin GANO ortalaması daha yüksektir (2.91 vs 2.79)</li>
+                        <li>Spor yapma alışkanlığı ile kitap okuma arasında pozitif ilişki vardır</li>
+                    </ul>
+                </div>
+            </section>
+        </article>
+
+        <!-- Yorum Bölümü -->
+        <section class="comments-section">
+            <h2>💬 Yorumlar</h2>
+            <div class="comments-container">
+                <div class="comment-form">
+                    <h3>Yorum Yap</h3>
+                    <form id="commentForm">
+                        <div class="form-group">
+                            <label for="name">İsim:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-posta:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Yorumunuz:</label>
+                            <textarea id="comment" name="comment" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Yorum Gönder</button>
+                    </form>
+                </div>
+                <div class="comments-list">
+                    <!-- Yorumlar buraya dinamik olarak eklenecek -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Yorum formu işlemleri
+        document.getElementById('commentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const comment = document.getElementById('comment').value;
+            
+            // Yeni yorum oluştur
+            const newComment = document.createElement('div');
+            newComment.className = 'comment';
+            newComment.innerHTML = `
+                <div class="comment-header">
+                    <strong>${name}</strong>
+                    <span class="comment-date">${new Date().toLocaleDateString()}</span>
+                </div>
+                <div class="comment-content">
+                    <p>${comment}</p>
+                </div>
+            `;
+            
+            // Yorumu listeye ekle
+            document.querySelector('.comments-list').prepend(newComment);
+            
+            // Formu temizle
+            this.reset();
+        });
+    </script>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>Point</span>Sight
+                    <p>Veri odaklı kararlar için yanınızdayız</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PointSight. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

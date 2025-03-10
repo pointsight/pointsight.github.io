@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - PointSight</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Header stili */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--background);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            padding: 0.5rem 0;
+        }
+        
+        /* Blog başlıkları için stiller */
+        .blog-header {
+            text-align: center;
+            margin-top: 0;
+            padding: 2rem 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        .blog-header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .blog-header p {
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .blog-card {
+            background: var(--light-background);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .blog-card-image {
+            position: relative;
+            padding-top: 60%;
+            overflow: hidden;
+        }
+        
+        .blog-card-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .blog-card:hover .blog-card-image img {
+            transform: scale(1.05);
+        }
+        
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-card h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .blog-card p {
+            margin-bottom: 1.5rem;
+            color: var(--light-text);
+        }
+        
+        /* Responsive ayarlamalar */
+        @media (max-width: 768px) {
+            .blog-header {
+                margin-top: 0;
+                padding: 1.5rem 1rem;
+            }
+            
+            .blog-header h1 {
+                font-size: 1.6rem;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            
+            .blog-card h2 {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .blog-header {
+                margin-top: 0;
+                padding: 1rem;
+            }
+            
+            .blog-header h1 {
+                font-size: 1.4rem;
+            }
+            
+            .blog-card h2 {
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Custom styles for blog index */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .blog-card {
+            background: var(--background);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .blog-card-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .blog-card:hover .blog-card-image img {
+            transform: scale(1.05);
+        }
+        
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            text-align: center;
+            line-height: 1.3;
+        }
+        
+        .blog-card-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-card-excerpt {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .blog-card-link {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .blog-card-link:hover {
+            background: var(--secondary-color);
+        }
+        
+        /* Blog banner */
+        .blog-banner {
+            width: 100%;
+            height: 120px;
+            background: var(--light-background);
+            margin-top: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .blog-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .blog-banner-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .blog-banner h2 {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-banner p {
+            color: var(--light-text);
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-banner {
+                height: 100px;
+                margin-top: 60px;
+            }
+            
+            .blog-banner h2 {
+                font-size: 1.5rem;
+            }
+            
+            .blog-banner p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="../index.html">
+                    <span>Point</span>Sight
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Ana Sayfa</a></li>
+                <li><a href="../posts/" class="active">Blog</a></li>
+                <li><a href="../contact.html">İletişim</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="Tema Değiştir">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <div class="blog-banner">
+        <div class="blog-banner-content">
+            <h2>PointSight Blog</h2>
+            <p>Veri analizi, finansal içgörüler ve araştırma sonuçlarımız</p>
+        </div>
+    </div>
+
+    <main class="blog-archive">
+        <div class="blog-header">
+            <h1><span class="section-emoji">📊</span> Blog Yazıları</h1>
+            <p>Veri analizi, pazar araştırmaları ve istatistiksel çalışmalarımızı keşfedin</p>
+            <div class="blog-categories">
+                <a href="#" class="category-tag">📈 Veri Analizi</a>
+                <a href="#" class="category-tag">💼 Pazar Araştırmaları</a>
+                <a href="#" class="category-tag">📱 Teknoloji</a>
+                <a href="#" class="category-tag">📚 Eğitim</a>
+            </div>
+        </div>
+
+        <div class="blog-grid">
+            <!-- Samsung Analizi -->
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <a href="samsung-mobile-analysis.html">
+                        <img src="../images/samsung-analysis/samsung.jpg" alt="Samsung Mobil Analiz">
+                        <div class="category">Pazar Analizi</div>
+                    </a>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar"></i> 8 Mart 2025</span>
+                        <span><i class="far fa-user"></i> Ali Volkan Çınar</span>
+                    </div>
+                    <h2>
+                        <a href="samsung-mobile-analysis.html">Samsung Mobil Cihaz Satış Analizi (2019-2024)</a>
+                    </h2>
+                    <p>
+                        Samsung'un son beş yıldaki mobil cihaz satış performansının bölgesel ve küresel kapsamlı analizi.
+                    </p>
+                    <div class="blog-tags">
+                        <span>#Mobil</span>
+                        <span>#Samsung</span>
+                        <span>#PazarAnalizi</span>
+                    </div>
+                    <a href="samsung-mobile-analysis.html" class="read-more">
+                        Devamını Oku <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Kitap Okuma Analizi -->
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <a href="reading-habits-analysis.html">
+                        <img src="../images/reading.jpg" alt="Kitap Okuma Alışkanlıkları Analizi">
+                        <div class="category">İstatistiksel Analiz</div>
+                    </a>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar"></i> 9 Mart 2025</span>
+                        <span><i class="far fa-user"></i> PointSight Ekibi</span>
+                    </div>
+                    <h2>
+                        <a href="reading-habits-analysis.html">Öğrencilerin Kitap Okuma Alışkanlıklarını Etkileyen Faktörlerin Analizi</a>
+                    </h2>
+                    <p>
+                        Üniversite öğrencilerinin kitap okuma alışkanlıklarını etkileyen faktörlerin kapsamlı analizi ve istatistiksel değerlendirmesi.
+                    </p>
+                    <div class="blog-tags">
+                        <span>#İstatistik</span>
+                        <span>#Eğitim</span>
+                        <span>#Araştırma</span>
+                    </div>
+                    <a href="reading-habits-analysis.html" class="read-more">
+                        Devamını Oku <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Walmart Analizi -->
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <a href="walmart-analysis.html">
+                        <img src="../images/walmart.webp" alt="Walmart Satış Analizi">
+                        <div class="category">Veri Analizi</div>
+                    </a>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar"></i> 1 Mart 2025</span>
+                        <span><i class="far fa-user"></i> PointSight Ekibi</span>
+                    </div>
+                    <h2>
+                        <a href="walmart-stock-analysis.html">Walmart Satış Analizi</a>
+                    </h2>
+                    <p>
+                        Walmart'ın satış verilerinin detaylı analizi, trend analizleri ve gelecek tahminleri ile birlikte kapsamlı bir değerlendirme.
+                    </p>
+                    <div class="blog-tags">
+                        <span>#Finans</span>
+                        <span>#Perakende</span>
+                        <span>#VeriAnalizi</span>
+                    </div>
+                    <a href="walmart-stock-analysis.html" class="read-more">
+                        Devamını Oku <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Point<span>Sight</span></h3>
+                    <p>Veri analizi ve istatistiksel araştırmalar ile işinize değer katıyoruz.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Hızlı Bağlantılar</h3>
+                    <ul>
+                        <li><a href="../index.html">Ana Sayfa</a></li>
+                        <li><a href="../posts/">Blog</a></li>
+                        <li><a href="../contact.html">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>İletişim</h3>
+                    <p>
+                        <i class="fas fa-envelope"></i> info@pointsight.com<br>
+                        <i class="fas fa-phone"></i> +90 (555) 123 45 67<br>
+                        <i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PointSight. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved theme preference or use default
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
+        
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+        
+        // Update icon based on current theme
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            if (theme === 'dark') {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+    </script>
+</body>
+</html>

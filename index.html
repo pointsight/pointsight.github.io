@@ -7,28 +7,87 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Header stili */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--background);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            padding: 0.5rem 0;
+        }
+        
+        /* Ana sayfa içeriği için margin */
+        main {
+            margin-top: 0; /* Removed top margin since we're adding a banner */
+        }
+        
+        /* Responsive ayarlamalar */
+        @media (max-width: 768px) {
+            main {
+                margin-top: 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <a href="index.html">
-                        <span>Point</span>Sight
-                    </a>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="index.html" class="active">Ana Sayfa</a></li>
-                    <li><a href="posts/walmart-stock-analysis.html">Blog</a></li>
-                    <li><a href="about.html">Hakkında</a></li>
-                    <li><a href="contact.html">İletişim</a></li>
-                </ul>
-                <button class="theme-toggle" aria-label="Tema Değiştir">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </nav>
-        </div>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <span>Point</span>Sight
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Ana Sayfa</a></li>
+                <li><a href="posts/">Blog</a></li>
+                <li><a href="contact.html">İletişim</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="Tema Değiştir">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
     </header>
+
+    <div class="hero-banner">
+        <div class="hero-banner-content">
+            <h2>Veri Analizi ve İstatistik Çözümleri</h2>
+            <p>Verilerinizi anlamlı içgörülere dönüştürüyoruz. Finansal analizler, pazar araştırmaları ve istatistiksel çalışmalarımızla işinize değer katıyoruz.</p>
+            <a href="contact.html" class="btn">Bize Ulaşın</a>
+        </div>
+    </div>
+
+    <!-- Feature Highlights Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Finansal Analizler</h3>
+                    <p>Borsa ve yatırım analizleri ile finansal kararlarınızı destekliyoruz.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Pazar Araştırmaları</h3>
+                    <p>Detaylı pazar analizleri ile rekabet avantajı sağlıyoruz.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Veri Bilimi</h3>
+                    <p>Modern veri bilimi teknikleri ile verilerinizden değer üretiyoruz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <main>
         <section class="hero">
@@ -73,14 +132,18 @@
 
                     <div class="blog-post">
                         <div class="post-image">
-                            <a href="posts/data-visualization.html">
-                                <img src="./images/data-visualization.jpg" alt="Veri Görselleştirme">
+                            <a href="posts/reading-habits-analysis.html">
+                                <img src="./images/reading.jpg" alt="Kitap Okuma Alışkanlıkları Analizi">
                             </a>
                         </div>
                         <div class="post-content">
-                            <h3><a href="posts/data-visualization.html">Veri Görselleştirme</a></h3>
-                            <p>Modern veri görselleştirme teknikleri ve finansal analizde kullanımı.</p>
-                            <a href="posts/data-visualization.html" class="read-more">Devamını Oku →</a>
+                            <h3><a href="posts/reading-habits-analysis.html">Öğrencilerin Kitap Okuma Alışkanlıklarını Etkileyen Faktörlerin Analizi</a></h3>
+                            <p>TÜBİTAK 2209-A kapsamında yapılan bu araştırmada, üniversite öğrencilerinin okuma alışkanlıklarını etkileyen faktörler inceleniyor.</p>
+                            <div class="post-meta">
+                                <span class="post-date">9 Mart 2025</span>
+                                <span class="post-category">📊 Veri Analizi</span>
+                            </div>
+                            <a href="posts/reading-habits-analysis.html" class="read-more">Devamını Oku →</a>
                         </div>
                     </div>
                 </div>
@@ -112,9 +175,9 @@
                     <h3>Hızlı Bağlantılar</h3>
                     <ul>
                         <li><a href="index.html">Ana Sayfa</a></li>
-                        <li><a href="posts/walmart-stock-analysis.html">Veri Analizi</a></li>
-                        <li><a href="posts/market-analysis.html">Borsa</a></li>
+                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="about.html">Hakkında</a></li>
+                        <li><a href="contact.html">İletişim</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">

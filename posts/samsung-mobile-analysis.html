@@ -7,44 +7,95 @@
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Custom styles for this post */
+        .chart-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .chart-container img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .analysis-section {
+            margin-bottom: 2rem;
+        }
+        
+        .analysis-section h2 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .analysis-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        
+        .data-table th {
+            background-color: var(--light-background);
+        }
+        
+        .data-table tr:nth-child(even) {
+            background-color: var(--light-background);
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <a href="../index.html">
-                        <span>Point</span>Sight
-                    </a>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="../index.html">Ana Sayfa</a></li>
-                    <li><a href="../posts/walmart-stock-analysis.html">Blog</a></li>
-                    <li><a href="../about.html">Hakkında</a></li>
-                    <li><a href="../contact.html">İletişim</a></li>
-                </ul>
-                <button class="theme-toggle" aria-label="Tema Değiştir">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </nav>
-        </div>
+        <nav>
+            <div class="logo">
+                <a href="../index.html">
+                    <span>Point</span>Sight
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Ana Sayfa</a></li>
+                <li><a href="../posts/">Blog</a></li>
+                <li><a href="../contact.html">İletişim</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="Tema Değiştir">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
     </header>
 
-    <main class="post-content">
-        <article class="container">
-            <header class="post-header">
+    <main class="post-container">
+        <article class="research-container">
+            <header class="research-header">
                 <h1><span class="section-emoji">📱</span> Samsung Mobil Cihaz Satış Analizi (2019-2024)</h1>
-                <div class="post-meta">
+                <div class="meta">
                     <span class="post-date">📅 8 Mart 2025</span>
-                    <span class="post-category">📊 Pazar Analizi</span>
+                    <span class="post-author">👤 PointSight Analiz Ekibi</span>
                     <span class="post-read-time">⏱️ 10 dk okuma</span>
-                    <span class="post-author">👤 Ali Volkan Çınar</span>
+                </div>
+                <div class="post-tags">
+                    <a href="#" class="tag">📊 Pazar Analizi</a>
+                    <a href="#" class="tag">📱 Mobil</a>
+                    <a href="#" class="tag">💼 Samsung</a>
+                    <a href="#" class="tag">📈 Veri Analizi</a>
                 </div>
             </header>
 
             <div class="post-body">
                 <!-- Giriş görseli -->
-                <div class="post-image" data-type="image">
+                <div class="post-featured-image">
                     <img src="../images/samsung-analysis/samsung.jpg" alt="Samsung Mobil Analiz Başlık Görseli">
                 </div>
 
@@ -469,9 +520,8 @@
                     <h3>Hızlı Bağlantılar</h3>
                     <ul>
                         <li><a href="../index.html">Ana Sayfa</a></li>
-                        <li><a href="../posts/walmart-stock-analysis.html">Veri Analizi</a></li>
-                        <li><a href="../posts/market-analysis.html">Borsa</a></li>
-                        <li><a href="../about.html">Hakkında</a></li>
+                        <li><a href="../posts/">Blog</a></li>
+                        <li><a href="../contact.html">İletişim</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -489,6 +539,35 @@
         </div>
     </footer>
 
-    <script src="../js/theme.js"></script>
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const htmlElement = document.documentElement;
+        
+        // Check for saved theme preference or use default
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
+        
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+        
+        // Update icon based on current theme
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            if (theme === 'dark') {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+    </script>
 </body>
 </html>
