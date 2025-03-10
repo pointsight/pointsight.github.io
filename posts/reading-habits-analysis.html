@@ -8,69 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Header stili */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--background);
-            z-index: 1000;
-            box-shadow: var(--shadow);
-            padding: 0.5rem 0;
-        }
-        
-        /* Ana içerik için margin */
-        .post-container {
-            margin-top: 0;
-            padding: 1rem;
-        }
-        
-        /* Blog başlıkları için stiller */
-        .research-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        /* Post banner */
-        .post-banner {
-            width: 100%;
-            height: 100px;
-            background: var(--light-background);
-            margin-top: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .post-banner::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-        }
-        
-        .post-banner-content {
-            text-align: center;
-            max-width: 800px;
-            padding: 0 2rem;
-        }
-        
-        .post-banner h2 {
-            font-size: 1.6rem;
-            color: var(--text-color);
-            margin-bottom: 0.5rem;
-        }
-        
-        .post-banner p {
-            color: var(--light-text);
-            font-size: 0.9rem;
-        }
-        
         /* Blog başlıkları için stiller */
         .research-header {
             text-align: center;
@@ -158,65 +95,6 @@
         
         .data-table tr:nth-child(even) {
             background-color: var(--light-background);
-        }
-        
-        /* Responsive ayarlamalar */
-        @media (max-width: 768px) {
-            .post-container {
-                margin-top: 0;
-            }
-            
-            .post-banner {
-                height: 80px;
-                margin-top: 60px;
-            }
-            
-            .post-banner h2 {
-                font-size: 1.4rem;
-            }
-            
-            .research-header h1 {
-                font-size: 1.5rem;
-            }
-            
-            .research-section h2 {
-                font-size: 1.3rem;
-            }
-            
-            .step-content h3 {
-                font-size: 1.1rem;
-            }
-            
-            .table-container {
-                overflow-x: auto;
-                display: block;
-                width: 100%;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .post-container {
-                margin-top: 0;
-                padding: 0.5rem;
-            }
-            
-            .post-banner {
-                height: 70px;
-                margin-top: 50px;
-            }
-            
-            .post-banner h2 {
-                font-size: 1.2rem;
-            }
-            
-            .research-header h1 {
-                font-size: 1.3rem;
-            }
-            
-            .meta span {
-                display: block;
-                margin-bottom: 0.5rem;
-            }
         }
     </style>
 </head>
