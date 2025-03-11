@@ -40,9 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Show success message
             const successMessage = document.createElement('div');
-            successMessage.textContent = 'Thank you for subscribing!';
+            successMessage.className = 'newsletter-success';
+            successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Bültene abone olduğunuz için teşekkür ederiz!';
             successMessage.style.color = 'var(--success-color)';
             successMessage.style.marginTop = '1rem';
+            successMessage.style.display = 'flex';
+            successMessage.style.alignItems = 'center';
+            successMessage.style.gap = '0.5rem';
             
             emailInput.value = '';
             newsletterForm.appendChild(successMessage);

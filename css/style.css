@@ -483,11 +483,11 @@ header nav {
 /* Newsletter section */
 .newsletter {
     background: var(--light-background);
-    padding: 4rem 0;
+    padding: 2rem 0;
 }
 
 .newsletter-content {
-    max-width: 600px;
+    max-width: 200px;
     margin: 0 auto;
 }
 
