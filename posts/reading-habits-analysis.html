@@ -80,16 +80,84 @@
             margin-bottom: 2rem;
         }
         
-        .analysis-section h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-color);
+        /* Mobile responsiveness - improved */
+        @media (max-width: 768px) {
+            .research-header {
+                margin-bottom: 1rem;
+            }
+            
+            .research-header h1 {
+                font-size: 1.4rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .research-section h2 {
+                font-size: 1.3rem;
+                margin: 1.5rem 0 0.75rem;
+            }
+            
+            .step-content h3 {
+                font-size: 1.1rem;
+            }
+            
+            .post-featured-image {
+                margin: 1rem 0;
+            }
+            
+            .data-visualization {
+                margin: 1rem 0;
+            }
+            
+            .chart-figure {
+                max-width: 100%;
+            }
+            
+            .chart-figure figcaption {
+                font-size: 0.85rem;
+            }
+            
+            .analysis-text {
+                font-size: 0.9rem;
+            }
+            
+            .meta span {
+                font-size: 0.8rem;
+                margin-right: 0.5rem;
+                display: inline-block;
+            }
+            
+            .tag {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.4rem;
+            }
         }
         
-        .analysis-section h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-color);
+        @media (max-width: 480px) {
+            .research-header h1 {
+                font-size: 1.2rem;
+            }
+            
+            .research-section h2 {
+                font-size: 1.1rem;
+            }
+            
+            .step-content h3 {
+                font-size: 1rem;
+            }
+            
+            .meta span {
+                display: block;
+                margin-bottom: 0.4rem;
+                font-size: 0.75rem;
+            }
+            
+            .chart-figure figcaption {
+                font-size: 0.75rem;
+            }
+            
+            .analysis-text {
+                font-size: 0.85rem;
+            }
         }
         
         .data-table {

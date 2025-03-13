@@ -111,7 +111,7 @@
             background-color: var(--light-background);
         }
         
-        /* Mobile responsiveness */
+        /* Mobile responsiveness - updated */
         @media (max-width: 768px) {
             .post-container {
                 padding: 1rem;
@@ -121,42 +121,59 @@
                 display: block;
                 width: 100%;
                 overflow-x: auto;
+                font-size: 0.85rem;
             }
             
-            .post-featured-image {
-                margin: 1rem 0;
-            }
-            
-            .research-header h1 {
-                font-size: 1.5rem;
+            .post-featured-image,
+            .post-image,
+            .chart-container {
+                margin: 0.75rem 0;
+                width: 100%;
             }
             
             .meta span {
                 display: inline-block;
                 margin-right: 0.5rem;
                 margin-bottom: 0.5rem;
-                font-size: 0.9rem;
+                font-size: 0.8rem;
             }
             
             .post-tags .tag {
                 display: inline-block;
                 margin-bottom: 0.5rem;
-                font-size: 0.8rem;
+                font-size: 0.75rem;
+                padding: 0.2rem 0.4rem;
+            }
+            
+            .analysis-card {
+                padding: 0.75rem;
+                margin-bottom: 1rem;
             }
         }
         
         @media (max-width: 480px) {
             .post-container {
-                padding: 0.5rem;
+                padding: 0.75rem;
             }
             
             .research-header h1 {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
+            }
+            
+            .section-emoji {
+                font-size: 1rem;
             }
             
             .meta span {
                 display: block;
-                margin-bottom: 0.5rem;
+                margin-bottom: 0.4rem;
+                font-size: 0.75rem;
+            }
+            
+            .data-table th, 
+            .data-table td {
+                padding: 0.3rem;
+                font-size: 0.75rem;
             }
         }
     </style>
