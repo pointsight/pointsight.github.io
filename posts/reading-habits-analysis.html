@@ -42,6 +42,9 @@
             height: auto;
             border-radius: 8px;
             box-shadow: var(--shadow);
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            object-fit: contain;
         }
         
         .meta, .post-tags {
@@ -49,16 +52,28 @@
             margin-bottom: 1rem;
         }
         
-        /* Chart container styles */
-        .chart-container {
+        /* Veri görselleştirme için stiller */
+        .data-visualization {
             margin: 2rem 0;
             text-align: center;
         }
         
-        .chart-container img {
+        .chart-figure {
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        
+        .chart-figure img {
             max-width: 100%;
+            height: auto;
             border-radius: 8px;
             box-shadow: var(--shadow);
+            border: 1px solid #ddd;
+            padding: 4px;
+            background-color: white;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            object-fit: contain;
         }
         
         .analysis-section {
@@ -145,7 +160,7 @@
             </header>
 
             <div class="post-featured-image">
-                <img src="../images/reading.jpg" alt="Kitap Okuma Alışkanlıkları Araştırması">
+                <img src="../images/reading.jpg" alt="Kitap Okuma Alışkanlıkları Araştırması" loading="eager" decoding="async">
             </div>
 
             <section class="research-section">
@@ -191,7 +206,7 @@
                 
                 <div class="data-visualization">
                     <figure class="chart-figure">
-                        <img src="../images/ogrenci1.png" alt="Cinsiyet dağılımına ilişkin pasta grafiği" class="analysis-chart" loading="lazy">
+                        <img src="../images/ogrenci1.png" alt="Cinsiyet dağılımına ilişkin pasta grafiği" class="analysis-chart" loading="eager" decoding="async">
                         <figcaption>Şekil 1: Cinsiyet dağılımına ilişkin pasta grafiği</figcaption>
                     </figure>
                     <div class="analysis-text">
@@ -211,7 +226,7 @@
 
                 <div class="data-visualization">
                     <figure class="chart-figure">
-                        <img src="../images/ogrenci2.png" alt="Anne eğitim düzeyine ilişkin pasta grafiği" class="analysis-chart" loading="lazy">
+                        <img src="../images/ogrenci2.png" alt="Anne eğitim düzeyine ilişkin pasta grafiği" class="analysis-chart" loading="eager" decoding="async">
                         <figcaption>Şekil 6.1: Anne eğitim düzeyine ilişkin pasta grafiği</figcaption>
                     </figure>
                     <div class="analysis-text">
@@ -450,7 +465,7 @@
                         </ul>
                         <p>Analiz sonuçları %90 güven aralığında şunları göstermektedir:</p>
                         <ul>
-                            <li>Baba eğitim düzeyinin kitap okuma alışkanlığı üzerinde istatistiksel olarak anlamlı bir etkisi vardır</li>
+                            <li>Baba eğitim düzeyinin kitap okuma alışkanlığını etkilemektedir</li>
                             <li>En yüksek kitap okuma oranı üniversite mezunu babaların çocuklarında görülmektedir (%73)</li>
                             <li>İlkokul mezunu babaların çocuklarında bu oran %51'dir</li>
                         </ul>

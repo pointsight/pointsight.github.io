@@ -40,6 +40,15 @@
     box-sizing: border-box;
 }
 
+/* Global image quality enhancement */
+img {
+    max-width: 100%;
+    height: auto;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    object-fit: contain;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
@@ -743,13 +752,13 @@ nav {
     font-weight: 500;
     transition: all 0.3s ease;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn:hover {
     transform: translateY(-2px);
     background: var(--primary-dark);
-    box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .btn:active {
