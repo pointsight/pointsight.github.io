@@ -1,0 +1,96 @@
+/* Piyasa Verileri Mobil Uyumluluk İyileştirmeleri */
+@media (max-width: 992px) {
+    .market-indicators {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .chart-wrapper {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .market-data-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+    
+    .market-data-title {
+        margin: 0;
+    }
+    
+    .refresh-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    
+    .refresh-timer {
+        margin-top: 0.5rem;
+    }
+    
+    .chart-wrapper {
+        height: 300px;
+    }
+    
+    .market-indicators {
+        gap: 0.75rem;
+    }
+    
+    .market-item {
+        padding: 0.75rem;
+    }
+    
+    .market-value {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .market-indicators {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-wrapper {
+        height: 250px;
+    }
+    
+    .market-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .market-item-header {
+        margin-bottom: 0;
+    }
+    
+    .market-value-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .market-value {
+        margin: 0;
+        font-size: 1.1rem;
+    }
+    
+    .data-disclaimer {
+        font-size: 0.7rem;
+    }
+}
+
+/* Yatay Mobil Görünüm */
+@media (max-height: 500px) and (orientation: landscape) {
+    .chart-wrapper {
+        height: 200px;
+    }
+    
+    .market-indicators {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

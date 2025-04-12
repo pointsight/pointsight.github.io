@@ -1,0 +1,86 @@
+/* Mobil Cihazlar İçin Özel Meta Viewport Düzeltmeleri */
+
+/* iPhone ve iPad için özel düzeltmeler */
+@supports (-webkit-touch-callout: none) {
+    /* iPhone X ve üzeri için güvenli alan düzeltmeleri */
+    @media screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+        .hero {
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        
+        footer {
+            padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+        }
+    }
+    
+    /* iPhone ve iPad için dokunma hedefi düzeltmeleri */
+    .button, 
+    .nav-links a, 
+    .crypto-controls button,
+    .refresh-button,
+    .theme-toggle {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* Samsung Galaxy Fold ve katlanabilir cihazlar için düzeltmeler */
+@media (max-width: 280px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 0 10px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+    }
+    
+    .crypto-widget,
+    .economic-calendar,
+    .market-data-section {
+        padding: 0.75rem;
+    }
+    
+    .crypto-name h4,
+    .event-title {
+        font-size: 0.9rem;
+    }
+}
+
+/* Yüksek çözünürlüklü ekranlar için düzeltmeler */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1320px;
+    }
+    
+    .chart-wrapper {
+        height: 500px;
+    }
+}
+
+/* Dokunmatik olmayan cihazlar için hover efektleri */
+@media (hover: hover) {
+    .button:hover,
+    .nav-links a:hover,
+    .crypto-card:hover,
+    .event-item:hover,
+    .market-item:hover {
+        transform: translateY(-3px);
+    }
+}
+
+/* Ekran yönü değiştiğinde animasyonları devre dışı bırak */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}

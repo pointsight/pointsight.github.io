@@ -1,0 +1,65 @@
+/* Kripto Takip Aracı Mobil Uyumluluk İyileştirmeleri */
+@media (max-width: 992px) {
+    .crypto-list {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .crypto-widget-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .crypto-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .crypto-list {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+    
+    .crypto-info {
+        flex-wrap: wrap;
+    }
+    
+    .crypto-name {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .crypto-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .crypto-card {
+        padding: 1rem;
+    }
+    
+    .crypto-icon img {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .crypto-name h4 {
+        font-size: 1rem;
+    }
+    
+    .crypto-price p {
+        font-size: 1.2rem;
+    }
+    
+    .crypto-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .market-cap {
+        width: 100%;
+    }
+}

@@ -1,0 +1,227 @@
+/* Responsive Design Improvements for PointSight Website */
+
+/* Genel Mobil Düzenlemeler */
+@media (max-width: 768px) {
+    /* Ana Düzen */
+    .container {
+        padding: 0 15px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    /* Header ve Navigasyon */
+    .nav-links {
+        padding: 1rem;
+    }
+    
+    .nav-links a {
+        padding: 0.5rem 0;
+    }
+    
+    /* Kahraman Bölümü */
+    .hero-content h1 {
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    /* Grafik ve Veri Bölümleri */
+    .chart-wrapper {
+        height: 300px;
+    }
+    
+    .market-data-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .market-data-title {
+        margin-bottom: 0.5rem;
+    }
+    
+    .refresh-timer {
+        margin: 0.5rem 0;
+    }
+    
+    .refresh-button {
+        align-self: flex-end;
+        margin-top: -2.5rem;
+    }
+    
+    /* Kripto Takip Aracı */
+    .crypto-widget {
+        padding: 1rem;
+    }
+    
+    .crypto-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .crypto-title {
+        margin-bottom: 0.5rem;
+    }
+    
+    .crypto-controls {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+    }
+    
+    .crypto-card {
+        padding: 0.75rem;
+    }
+    
+    /* Ekonomik Takvim */
+    .economic-calendar {
+        padding: 1rem;
+    }
+    
+    .calendar-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .calendar-title {
+        margin-bottom: 0.5rem;
+    }
+    
+    .calendar-controls {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+    }
+    
+    .event-item {
+        padding: 0.75rem;
+    }
+}
+
+/* Daha Küçük Mobil Cihazlar */
+@media (max-width: 480px) {
+    /* Ana Düzen */
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    /* Kahraman Bölümü */
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    /* Grafik ve Veri Bölümleri */
+    .chart-wrapper {
+        height: 250px;
+    }
+    
+    .market-indicators {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Kripto Takip Aracı */
+    .crypto-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .crypto-info {
+        flex: 1;
+    }
+    
+    .crypto-details {
+        display: none;
+    }
+    
+    /* Ekonomik Takvim */
+    .event-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .event-details {
+        flex-direction: column;
+    }
+    
+    .event-values {
+        margin-top: 0.5rem;
+    }
+    
+    /* Bildirimler */
+    .notification {
+        width: 90%;
+        left: 5%;
+    }
+}
+
+/* Tablet Cihazlar */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Kripto Takip Aracı */
+    .crypto-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Ekonomik Takvim */
+    .event-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Yatay Mobil Görünüm */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+    
+    .hero-content {
+        padding: 1rem 0;
+    }
+    
+    .chart-wrapper {
+        height: 200px;
+    }
+}
+
+/* Dokunmatik Cihazlar İçin İyileştirmeler */
+@media (hover: none) {
+    .button, 
+    .nav-links a, 
+    .refresh-button,
+    .crypto-card,
+    .event-item {
+        padding: 0.75rem;
+    }
+    
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Yüksek DPI Ekranlar */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .crypto-icon img {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* Safari Tarayıcısı İçin Düzeltmeler */
+@supports (-webkit-touch-callout: none) {
+    .market-data-header,
+    .crypto-header,
+    .calendar-header {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+    }
+}
+
+/* Gece Modu Düzeltmeleri */
+@media (prefers-color-scheme: dark) {
+    [data-theme="auto"] .crypto-icon {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+}
