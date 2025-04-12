@@ -1,0 +1,293 @@
+/* PointSight Website Enhancements CSS */
+
+/* Search functionality */
+.search-container {
+    position: relative;
+    margin-right: 1rem;
+}
+
+.search-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: var(--transition);
+}
+
+.search-toggle:hover {
+    color: var(--primary-color);
+}
+
+.search-form-container {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    background-color: var(--background);
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    display: none;
+    z-index: 1001;
+}
+
+.search-form-container.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.search-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-family: inherit;
+}
+
+.search-form button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.search-form button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Enhanced Hero Banner */
+.hero-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6rem 2rem;
+}
+
+.hero-banner-content {
+    max-width: 60%;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.btn.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.secondary-btn {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn.secondary-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.hero-animation {
+    position: relative;
+    width: 35%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.animated-chart {
+    position: relative;
+    font-size: 2.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    gap: 1.5rem;
+}
+
+.animated-chart i {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animated-chart i:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.animated-chart i:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Data Insights Section */
+.data-insights-section {
+    padding: 4rem 0;
+    background-color: var(--light-background);
+}
+
+.insights-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.chart-wrapper {
+    background-color: var(--background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    height: 400px;
+}
+
+.market-indicators {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.indicator-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    transition: var(--transition);
+}
+
+.indicator-card:hover {
+    transform: translateY(-5px);
+}
+
+.indicator-icon {
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+}
+
+.indicator-card.up .indicator-icon {
+    background-color: var(--success-color);
+}
+
+.indicator-card.down .indicator-icon {
+    background-color: var(--error-color);
+}
+
+.indicator-details h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.indicator-details .value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.indicator-card.up .change {
+    color: var(--success-color);
+}
+
+.indicator-card.down .change {
+    color: var(--error-color);
+}
+
+.data-disclaimer {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    color: var(--light-text);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .insights-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-wrapper {
+        height: 350px;
+    }
+    
+    .market-indicators {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 4rem 1rem;
+    }
+    
+    .hero-banner-content {
+        max-width: 100%;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .hero-animation {
+        width: 100%;
+        margin-top: 2rem;
+    }
+    
+    .market-indicators {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-form-container {
+        width: 250px;
+    }
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .chart-wrapper {
+    background-color: var(--light-background);
+}
+
+[data-theme="dark"] .indicator-card {
+    background-color: var(--light-background);
+}

@@ -1,0 +1,192 @@
+/* Ekonomik Takvim Stilleri */
+.economic-calendar {
+    background-color: var(--background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.calendar-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--text-color);
+}
+
+.calendar-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.calendar-nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 0.875rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-nav-btn:hover {
+    background-color: var(--light-background);
+    color: var(--primary-color);
+}
+
+.current-date {
+    font-weight: 500;
+    min-width: 200px;
+    text-align: center;
+}
+
+.calendar-content {
+    overflow-x: auto;
+}
+
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.calendar-table th,
+.calendar-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.calendar-table th {
+    background-color: var(--light-background);
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+.calendar-table tbody tr {
+    transition: var(--transition);
+}
+
+.calendar-table tbody tr:hover {
+    background-color: var(--light-background);
+}
+
+.event-time {
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.event-country {
+    white-space: nowrap;
+}
+
+.event-name {
+    font-weight: 500;
+}
+
+.event-importance {
+    text-align: center;
+}
+
+.importance-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.importance-indicator.high {
+    background-color: var(--error-color);
+}
+
+.importance-indicator.medium {
+    background-color: var(--warning-color);
+}
+
+.importance-indicator.low {
+    background-color: var(--success-color);
+}
+
+.event-actual,
+.event-forecast,
+.event-previous {
+    text-align: right;
+    font-family: 'Consolas', monospace;
+}
+
+.importance-high {
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+.importance-medium {
+    background-color: rgba(245, 158, 11, 0.05);
+}
+
+.calendar-loader {
+    text-align: center;
+    padding: 2rem;
+    color: var(--light-text);
+}
+
+.calendar-error {
+    text-align: center;
+    padding: 2rem;
+    color: var(--error-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.no-events {
+    text-align: center;
+    padding: 2rem;
+    color: var(--light-text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.no-events i {
+    font-size: 2rem;
+    opacity: 0.5;
+}
+
+/* Responsive ayarlamalar */
+@media (max-width: 768px) {
+    .calendar-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .calendar-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .calendar-table th,
+    .calendar-table td {
+        padding: 0.5rem;
+    }
+    
+    .event-name {
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

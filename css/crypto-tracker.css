@@ -1,0 +1,221 @@
+/* Kripto Para Takip Aracı Stilleri */
+.crypto-widget {
+    background-color: var(--background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.crypto-widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.crypto-widget-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--text-color);
+}
+
+.crypto-controls {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.refresh-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.refresh-btn:hover {
+    background-color: var(--light-background);
+    color: var(--primary-color);
+}
+
+.refresh-btn.rotating i {
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#currency-selector {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--background);
+    color: var(--text-color);
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.crypto-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.crypto-card {
+    background-color: var(--light-background);
+    border-radius: var(--border-radius);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: var(--transition);
+    border-left: 4px solid transparent;
+}
+
+.crypto-card.up {
+    border-left-color: var(--success-color);
+}
+
+.crypto-card.down {
+    border-left-color: var(--error-color);
+}
+
+.crypto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.crypto-icon {
+    display: flex;
+    align-items: center;
+}
+
+.crypto-icon img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.crypto-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.crypto-name h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.crypto-symbol {
+    font-size: 0.75rem;
+    color: var(--light-text);
+    margin-left: 0.25rem;
+}
+
+.crypto-price p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.price-change {
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.price-change.positive {
+    color: var(--success-color);
+}
+
+.price-change.negative {
+    color: var(--error-color);
+}
+
+.crypto-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.market-cap {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+}
+
+.detail-label {
+    color: var(--light-text);
+}
+
+.detail-value {
+    font-weight: 500;
+}
+
+.crypto-loader {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    color: var(--light-text);
+}
+
+.crypto-error {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    color: var(--error-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.crypto-timestamp {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--light-text);
+}
+
+/* Responsive ayarlamalar */
+@media (max-width: 992px) {
+    .crypto-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .crypto-widget-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .crypto-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 576px) {
+    .crypto-list {
+        grid-template-columns: 1fr;
+    }
+}

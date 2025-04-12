@@ -1,0 +1,77 @@
+/* Kripto Para Simgeleri CSS */
+.crypto-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    font-size: 12px;
+    text-transform: uppercase;
+    background-size: cover;
+    background-position: center;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+/* Bitcoin */
+.crypto-icon.btc {
+    background-color: #f7931a;
+    background-image: linear-gradient(45deg, #f7931a, #ffc04c);
+}
+
+/* Ethereum */
+.crypto-icon.eth {
+    background-color: #627eea;
+    background-image: linear-gradient(45deg, #627eea, #8ca3f2);
+}
+
+/* Binance Coin */
+.crypto-icon.bnb {
+    background-color: #f3ba2f;
+    background-image: linear-gradient(45deg, #f3ba2f, #ffda7a);
+}
+
+/* Ripple */
+.crypto-icon.xrp {
+    background-color: #23292f;
+    background-image: linear-gradient(45deg, #23292f, #4a5568);
+}
+
+/* Cardano */
+.crypto-icon.ada {
+    background-color: #0033ad;
+    background-image: linear-gradient(45deg, #0033ad, #3b5ef7);
+}
+
+/* Solana */
+.crypto-icon.sol {
+    background-color: #9945ff;
+    background-image: linear-gradient(45deg, #9945ff, #c77dff);
+}
+
+/* Dogecoin */
+.crypto-icon.doge {
+    background-color: #c3a634;
+    background-image: linear-gradient(45deg, #c3a634, #e9cb5d);
+}
+
+/* Polkadot */
+.crypto-icon.dot {
+    background-color: #e6007a;
+    background-image: linear-gradient(45deg, #e6007a, #ff5db1);
+}
+
+/* Polygon */
+.crypto-icon.matic {
+    background-color: #8247e5;
+    background-image: linear-gradient(45deg, #8247e5, #b48bf0);
+}
+
+/* Avalanche */
+.crypto-icon.avax {
+    background-color: #e84142;
+    background-image: linear-gradient(45deg, #e84142, #ff7e7f);
+}

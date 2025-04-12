@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PointSight</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/enhancements.css">
+    <link rel="stylesheet" href="css/crypto-tracker.css">
+    <link rel="stylesheet" href="css/economic-calendar.css">
+    <link rel="stylesheet" href="css/market-data.css">
+    <link rel="stylesheet" href="css/crypto-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Chart.js for data visualization -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <style>
         /* Header stili */
         header {
@@ -47,8 +55,21 @@
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Ana Sayfa</a></li>
                 <li><a href="posts/">Blog</a></li>
+                <li><a href="about.html">Hakkımızda</a></li>
+                <li><a href="calculators.html">Hesaplayıcılar</a></li>
                 <li><a href="contact.html">İletişim</a></li>
             </ul>
+            <div class="search-container">
+                <button class="search-toggle" aria-label="Arama">
+                    <i class="fas fa-search"></i>
+                </button>
+                <div class="search-form-container">
+                    <form id="search-form" class="search-form">
+                        <input type="text" placeholder="Arama yapın..." required>
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
             <button class="theme-toggle" aria-label="Tema Değiştir">
                 <i class="fas fa-moon"></i>
             </button>
@@ -59,7 +80,17 @@
         <div class="hero-banner-content">
             <h2>Veri Analizi ve İstatistik Çözümleri</h2>
             <p>Verilerinizi anlamlı içgörülere dönüştürüyoruz. Finansal analizler, pazar araştırmaları ve istatistiksel çalışmalarımızla işinize değer katıyoruz.</p>
-            <a href="contact.html" class="btn">Bize Ulaşın</a>
+            <div class="hero-buttons">
+                <a href="contact.html" class="btn primary-btn">Bize Ulaşın</a>
+                <a href="#data-insights" class="btn secondary-btn">Güncel Analizler <i class="fas fa-arrow-down"></i></a>
+            </div>
+        </div>
+        <div class="hero-animation">
+            <div class="animated-chart">
+                <i class="fas fa-chart-line"></i>
+                <i class="fas fa-chart-pie"></i>
+                <i class="fas fa-chart-bar"></i>
+            </div>
         </div>
     </div>
 
@@ -153,6 +184,68 @@
             </div>
         </section>
 
+        <!-- Data Visualization Section -->
+        <section id="data-insights" class="data-insights-section">
+            <div class="container">
+                <h2 class="section-title">Güncel Piyasa Verileri</h2>
+                <div class="insights-container">
+                    <div class="chart-wrapper">
+                        <canvas id="home-chart"></canvas>
+                    </div>
+                    <div class="market-indicators">
+                        <div class="indicator-card up">
+                            <div class="indicator-icon">
+                                <i class="fas fa-arrow-trend-up"></i>
+                            </div>
+                            <div class="indicator-details">
+                                <h3>BIST 100</h3>
+                                <p class="value">9,324.56</p>
+                                <p class="change">+1.24%</p>
+                            </div>
+                        </div>
+                        <div class="indicator-card down">
+                            <div class="indicator-icon">
+                                <i class="fas fa-arrow-trend-down"></i>
+                            </div>
+                            <div class="indicator-details">
+                                <h3>USD/TRY</h3>
+                                <p class="value">32.45</p>
+                                <p class="change">-0.35%</p>
+                            </div>
+                        </div>
+                        <div class="indicator-card up">
+                            <div class="indicator-icon">
+                                <i class="fas fa-arrow-trend-up"></i>
+                            </div>
+                            <div class="indicator-details">
+                                <h3>ALTIN (ONS)</h3>
+                                <p class="value">2,345.78</p>
+                                <p class="change">+0.87%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-disclaimer">
+                    <p><i class="fas fa-info-circle"></i> Veriler gösterim amaçlıdır. Son güncelleme: 12 Nisan 2025</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kripto Para Takip Aracı -->
+        <section class="crypto-section">
+            <div class="container">
+                <div id="crypto-widget" class="crypto-widget"></div>
+            </div>
+        </section>
+
+        <!-- Ekonomik Takvim -->
+        <section class="calendar-section">
+            <div class="container">
+                <div id="economic-calendar" class="economic-calendar"></div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
         <section class="newsletter">
             <div class="container">
                 <div class="newsletter-content">
@@ -178,8 +271,9 @@
                     <h3>Hızlı Bağlantılar</h3>
                     <ul>
                         <li><a href="index.html">Ana Sayfa</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="about.html">Hakkında</a></li>
+                        <li><a href="posts/">Blog</a></li>
+                        <li><a href="about.html">Hakkımızda</a></li>
+                        <li><a href="calculators.html">Hesaplayıcılar</a></li>
                         <li><a href="contact.html">İletişim</a></li>
                     </ul>
                 </div>
@@ -256,5 +350,11 @@
             });
         });
     </script>
+    <script src="js/market-api.js"></script>
+    <script src="js/real-time-api.js"></script>
+    <script src="js/chart-home.js"></script>
+    <script src="js/crypto-tracker.js"></script>
+    <script src="js/economic-calendar.js"></script>
+    <script src="js/ui-enhancements.js"></script>
 </body>
 </html>

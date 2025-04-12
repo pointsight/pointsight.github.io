@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finansal Hesaplayıcılar - PointSight</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/enhancements.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .calculators-container {
+            padding: 2rem 0;
+        }
+        
+        .calculator-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+        
+        .calculator-tab {
+            padding: 0.75rem 1.25rem;
+            background-color: var(--light-background);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .calculator-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .calculator-panel {
+            display: none;
+            background-color: var(--background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .calculator-panel.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .calculator-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-family: inherit;
+        }
+        
+        .form-group select {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            background-color: var(--background);
+        }
+        
+        .calculator-result {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: var(--light-background);
+            border-radius: var(--border-radius);
+            display: none;
+        }
+        
+        .calculator-result.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .result-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .result-value {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .result-details {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        
+        .detail-label {
+            font-weight: 500;
+        }
+        
+        .calculator-info {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: rgba(var(--primary-color-rgb), 0.1);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .calculator-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .calculator-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .calculator-panel {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <span>Point</span>Sight
+                </a>
+            </div>
+            <button class="menu-toggle" aria-label="Menü" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="posts/">Blog</a></li>
+                <li><a href="about.html">Hakkımızda</a></li>
+                <li><a href="calculators.html" class="active">Hesaplayıcılar</a></li>
+                <li><a href="contact.html">İletişim</a></li>
+            </ul>
+            <div class="search-container">
+                <button class="search-toggle" aria-label="Arama">
+                    <i class="fas fa-search"></i>
+                </button>
+                <div class="search-form-container">
+                    <form id="search-form" class="search-form">
+                        <input type="text" placeholder="Arama yapın..." required>
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+            <button class="theme-toggle" aria-label="Tema Değiştir">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main style="margin-top: 60px;">
+        <section class="page-header">
+            <div class="container">
+                <h1>Finansal Hesaplayıcılar</h1>
+                <p>Yatırım kararlarınızı destekleyecek interaktif finansal hesaplama araçları</p>
+            </div>
+        </section>
+
+        <section class="calculators-container">
+            <div class="container">
+                <div class="calculator-tabs">
+                    <div class="calculator-tab active" data-tab="compound-interest">
+                        <i class="fas fa-chart-line"></i> Bileşik Faiz
+                    </div>
+                    <div class="calculator-tab" data-tab="stock-return">
+                        <i class="fas fa-coins"></i> Hisse Senedi Getirisi
+                    </div>
+                    <div class="calculator-tab" data-tab="mortgage">
+                        <i class="fas fa-home"></i> Konut Kredisi
+                    </div>
+                </div>
+
+                <!-- Bileşik Faiz Hesaplayıcı -->
+                <div class="calculator-panel active" id="compound-interest-panel">
+                    <h2>Bileşik Faiz Hesaplayıcı</h2>
+                    <p>Yatırımlarınızın zaman içinde nasıl büyüyeceğini hesaplayın.</p>
+                    
+                    <form id="compound-interest-form" class="calculator-form">
+                        <div class="form-group">
+                            <label for="principal">Anapara (TL)</label>
+                            <input type="number" id="principal" min="0" step="1000" value="10000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="interest-rate">Yıllık Faiz Oranı (%)</label>
+                            <input type="number" id="interest-rate" min="0" max="100" step="0.1" value="15" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time-period">Süre (Yıl)</label>
+                            <input type="number" id="time-period" min="1" max="50" step="1" value="5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="compound-frequency">Faiz Kapitalizasyon Sıklığı</label>
+                            <select id="compound-frequency">
+                                <option value="1">Yıllık</option>
+                                <option value="2">Yarı Yıllık</option>
+                                <option value="4">Üç Aylık</option>
+                                <option value="12" selected>Aylık</option>
+                                <option value="365">Günlük</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="additional-contribution">Aylık Ek Katkı (TL, isteğe bağlı)</label>
+                            <input type="number" id="additional-contribution" min="0" step="100" value="0">
+                        </div>
+                        <button type="submit" class="btn">Hesapla</button>
+                    </form>
+                    
+                    <div class="calculator-result" id="compound-interest-result">
+                        <h3 class="result-title">Hesaplama Sonucu</h3>
+                        <div class="result-value" id="compound-interest-value">0 TL</div>
+                        <div class="result-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Toplam Anapara:</span>
+                                <span id="total-principal">0 TL</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Toplam Faiz Kazancı:</span>
+                                <span id="total-interest">0 TL</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-info">
+                        <h3>Bileşik Faiz Nedir?</h3>
+                        <p>Bileşik faiz, hem anaparanız hem de daha önce kazanılan faizler üzerinden faiz kazanmanızı sağlayan bir hesaplama yöntemidir. Bu, uzun vadeli yatırımlarda servetinizi büyütmenin en etkili yollarından biridir.</p>
+                    </div>
+                </div>
+
+                <!-- Hisse Senedi Getirisi Hesaplayıcı -->
+                <div class="calculator-panel" id="stock-return-panel">
+                    <h2>Hisse Senedi Getirisi Hesaplayıcı</h2>
+                    <p>Hisse senedi yatırımlarınızın potansiyel getirisini hesaplayın.</p>
+                    
+                    <form id="stock-return-form" class="calculator-form">
+                        <div class="form-group">
+                            <label for="initial-investment">Başlangıç Yatırımı (TL)</label>
+                            <input type="number" id="initial-investment" min="0" step="1000" value="10000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="stock-price">Hisse Fiyatı (TL)</label>
+                            <input type="number" id="stock-price" min="0" step="0.01" value="25.50" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expected-growth">Beklenen Yıllık Büyüme (%)</label>
+                            <input type="number" id="expected-growth" min="-100" max="100" step="0.1" value="12" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dividend-yield">Temettü Getirisi (%, isteğe bağlı)</label>
+                            <input type="number" id="dividend-yield" min="0" max="100" step="0.1" value="2.5">
+                        </div>
+                        <div class="form-group">
+                            <label for="investment-period">Yatırım Süresi (Yıl)</label>
+                            <input type="number" id="investment-period" min="1" max="50" step="1" value="10" required>
+                        </div>
+                        <button type="submit" class="btn">Hesapla</button>
+                    </form>
+                    
+                    <div class="calculator-result" id="stock-return-result">
+                        <h3 class="result-title">Hesaplama Sonucu</h3>
+                        <div class="result-value" id="stock-return-value">0 TL</div>
+                        <div class="result-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Başlangıç Yatırımı:</span>
+                                <span id="initial-investment-value">0 TL</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Sermaye Kazancı:</span>
+                                <span id="capital-gain">0 TL</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Temettü Kazancı:</span>
+                                <span id="dividend-income">0 TL</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Toplam Getiri (%):</span>
+                                <span id="total-return-percentage">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-info">
+                        <h3>Hisse Senedi Yatırımı</h3>
+                        <p>Hisse senedi yatırımlarında getiri, sermaye kazancı (hisse fiyatındaki artış) ve temettü gelirlerinden oluşur. Uzun vadeli yatırımlarda, bileşik getiri etkisi önemli bir faktördür.</p>
+                    </div>
+                </div>
+
+                <!-- Konut Kredisi Hesaplayıcı -->
+                <div class="calculator-panel" id="mortgage-panel">
+                    <h2>Konut Kredisi Hesaplayıcı</h2>
+                    <p>Konut kredisi ödemelerinizi ve toplam maliyeti hesaplayın.</p>
+                    
+                    <form id="mortgage-form" class="calculator-form">
+                        <div class="form-group">
+                            <label for="loan-amount">Kredi Tutarı (TL)</label>
+                            <input type="number" id="loan-amount" min="0" step="10000" value="500000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loan-term">Kredi Vadesi (Yıl)</label>
+                            <input type="number" id="loan-term" min="1" max="30" step="1" value="10" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="interest-rate-mortgage">Yıllık Faiz Oranı (%)</label>
+                            <input type="number" id="interest-rate-mortgage" min="0" max="100" step="0.01" value="18.5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment-frequency">Ödeme Sıklığı</label>
+                            <select id="payment-frequency">
+                                <option value="12" selected>Aylık</option>
+                                <option value="4">Üç Aylık</option>
+                                <option value="2">Yarı Yıllık</option>
+                                <option value="1">Yıllık</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Hesapla</button>
+                    </form>
+                    
+                    <div class="calculator-result" id="mortgage-result">
+                        <h3 class="result-title">Hesaplama Sonucu</h3>
+                        <div class="result-value" id="mortgage-payment">0 TL</div>
+                        <div class="result-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Kredi Tutarı:</span>
+                                <span id="loan-amount-value">0 TL</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Toplam Ödenecek Faiz:</span>
+                                <span id="total-interest-paid">0 TL</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Toplam Geri Ödeme:</span>
+                                <span id="total-payment">0 TL</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-info">
+                        <h3>Konut Kredisi İpuçları</h3>
+                        <p>Konut kredisi seçerken, aylık ödeme tutarınızın gelirinizin %30'unu aşmamasına dikkat edin. Daha uzun vadeler aylık ödemeleri düşürür ancak toplam faiz maliyetini artırır.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Hakkımızda</h3>
+                    <p>Finansal piyasalar ve veri analizi konularında güncel bilgiler ve detaylı analizler sunuyoruz.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Hızlı Bağlantılar</h3>
+                    <ul>
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="posts/">Blog</a></li>
+                        <li><a href="about.html">Hakkında</a></li>
+                        <li><a href="calculators.html">Hesaplayıcılar</a></li>
+                        <li><a href="contact.html">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Bizi Takip Edin</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link linkedin">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link github">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span class="year">2025</span> PointSight. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching functionality
+            const tabs = document.querySelectorAll('.calculator-tab');
+            const panels = document.querySelectorAll('.calculator-panel');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetPanel = tab.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Show target panel
+                    panels.forEach(panel => {
+                        panel.classList.remove('active');
+                        if (panel.id === `${targetPanel}-panel`) {
+                            panel.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Compound Interest Calculator
+            const compoundInterestForm = document.getElementById('compound-interest-form');
+            const compoundInterestResult = document.getElementById('compound-interest-result');
+            
+            if (compoundInterestForm) {
+                compoundInterestForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const principal = parseFloat(document.getElementById('principal').value);
+                    const rate = parseFloat(document.getElementById('interest-rate').value) / 100;
+                    const time = parseFloat(document.getElementById('time-period').value);
+                    const frequency = parseFloat(document.getElementById('compound-frequency').value);
+                    const monthlyContribution = parseFloat(document.getElementById('additional-contribution').value);
+                    
+                    // Calculate compound interest
+                    let totalAmount = principal;
+                    let totalPrincipal = principal;
+                    
+                    // If there are monthly contributions
+                    if (monthlyContribution > 0) {
+                        for (let t = 0; t < time * 12; t++) {
+                            // Add monthly contribution
+                            totalAmount += monthlyContribution;
+                            totalPrincipal += monthlyContribution;
+                            
+                            // Apply monthly interest
+                            totalAmount *= (1 + (rate / 12));
+                        }
+                    } else {
+                        // Simple compound interest formula
+                        totalAmount = principal * Math.pow(1 + (rate / frequency), frequency * time);
+                    }
+                    
+                    const totalInterest = totalAmount - totalPrincipal;
+                    
+                    // Display results
+                    document.getElementById('compound-interest-value').textContent = totalAmount.toLocaleString('tr-TR') + ' TL';
+                    document.getElementById('total-principal').textContent = totalPrincipal.toLocaleString('tr-TR') + ' TL';
+                    document.getElementById('total-interest').textContent = totalInterest.toLocaleString('tr-TR') + ' TL';
+                    
+                    compoundInterestResult.classList.add('active');
+                });
+            }
+            
+            // Stock Return Calculator
+            const stockReturnForm = document.getElementById('stock-return-form');
+            const stockReturnResult = document.getElementById('stock-return-result');
+            
+            if (stockReturnForm) {
+                stockReturnForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const initialInvestment = parseFloat(document.getElementById('initial-investment').value);
+                    const stockPrice = parseFloat(document.getElementById('stock-price').value);
+                    const growthRate = parseFloat(document.getElementById('expected-growth').value) / 100;
+                    const dividendYield = parseFloat(document.getElementById('dividend-yield').value) / 100;
+                    const years = parseFloat(document.getElementById('investment-period').value);
+                    
+                    // Calculate number of shares
+                    const shares = initialInvestment / stockPrice;
+                    
+                    // Calculate future stock price
+                    const futureStockPrice = stockPrice * Math.pow(1 + growthRate, years);
+                    
+                    // Calculate capital gain
+                    const futureValue = shares * futureStockPrice;
+                    const capitalGain = futureValue - initialInvestment;
+                    
+                    // Calculate dividend income (simplified)
+                    let totalDividends = 0;
+                    for (let y = 1; y <= years; y++) {
+                        const yearStockPrice = stockPrice * Math.pow(1 + growthRate, y - 1);
+                        const yearDividend = shares * yearStockPrice * dividendYield;
+                        totalDividends += yearDividend;
+                    }
+                    
+                    // Calculate total return
+                    const totalValue = futureValue + totalDividends;
+                    const totalReturnPercentage = ((totalValue / initialInvestment) - 1) * 100;
+                    
+                    // Display results
+                    document.getElementById('stock-return-value').textContent = totalValue.toLocaleString('tr-TR') + ' TL';
+                    document.getElementById('initial-investment-value').textContent = initialInvestment.toLocaleString('tr-TR') + ' TL';
+                    document.getElementById('capital-gain').textContent = capitalGain.toLocaleString('tr-TR') + ' TL';
+                    document.getElementById('dividend-income').textContent = totalDividends.toLocaleString('tr-TR') + ' TL';
+                    document.getElementById('total-return-percentage').textContent = totalReturnPercentage.toFixed(2) + '%';
+                    
+                    stockReturnResult.classList.add('active');
+                });
+            }
+            
+            // Mortgage Calculator
+            const mortgageForm = document.getElementById('mortgage-form');
+            const mortgageResult = document.getElementById('mortgage-result');
+            
+            if (mortgageForm) {
+                mortgageForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const loanAmount = parseFloat(document.getElementById('loan-amount').value);
+                    const loanTerm = parseFloat(document.getElementById('loan-term').value);
+                    const interestRate = parseFloat(document.getElementById('interest-rate-mortgage').value) / 100;
+                    const paymentFrequency = parseFloat(document.getElementById('payment-frequency').value);
+                    
+                    // Calculate number of payments
+                    const numPayments = loanTerm * paymentFrequency;
+                    
+                    // Calculate periodic interest rate
+                    const periodicRate = interestRate / paymentFrequency;
+                    
+                    // Calculate payment amount
+                    const paymentAmount = loanAmount * (periodicRate * Math.pow(1 + periodicRate, numPayments)) / (Math.pow(1 + periodicRate, numPayments) - 1);
+                    
+                    // Calculate total payment and interest
+                    const totalPayment = paymentAmount * numPayments;
+                    const totalInterest = totalPayment - loanAmount;
+                    
+                    // Display results
+                    document.getElementById('mortgage-payment').textContent = paymentAmount.toLocaleString('tr-TR') + ' TL';
+                    document.getElementById('loan-amount-value').textContent = loanAmount.toLocaleString('tr-TR') + ' TL';
+                    document.getElementById('total-interest-paid').textContent = totalInterest.toLocaleString('tr-TR') + ' TL';
+                    document.getElementById('total-payment').textContent = totalPayment.toLocaleString('tr-TR') + ' TL';
+                    
+                    mortgageResult.classList.add('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
